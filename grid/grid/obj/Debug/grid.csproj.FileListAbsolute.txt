@@ -1,0 +1,16 @@
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\bin\Debug\grid.exe.config
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\bin\Debug\grid.exe
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\bin\Debug\grid.pdb
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.csprojResolveAssemblyReference.cache
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\MainWindow.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\App.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid_MarkupCompile.cache
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid_MarkupCompile.lref
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\MainWindow.baml
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\Themes\Generic.baml
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.g.resources
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.Properties.Resources.resources
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.csproj.GenerateResource.Cache
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.exe
+c:\users\robins\documents\visual studio 2012\Projects\grid\grid\obj\Debug\grid.pdb

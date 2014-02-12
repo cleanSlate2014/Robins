@@ -1,0 +1,12 @@
+﻿<Window x:Class="grid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ravi="clr-namespace:grid"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="314" Margin="3,0,0,0" VerticalAlignment="Top" Width="513" >
+            <ravi:CustomControl1 Height="50" Width="50"/>
+        </Grid>
+
+    </Grid>
+</Window>

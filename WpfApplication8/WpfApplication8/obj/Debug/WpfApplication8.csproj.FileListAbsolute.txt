@@ -1,0 +1,4 @@
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication8\WpfApplication8\bin\Debug\WpfApplication8.exe.config
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication8\WpfApplication8\obj\Debug\WpfApplication8.csprojResolveAssemblyReference.cache
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication8\WpfApplication8\obj\Debug\App.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication8\WpfApplication8\obj\Debug\WpfApplication8_MarkupCompile.cache

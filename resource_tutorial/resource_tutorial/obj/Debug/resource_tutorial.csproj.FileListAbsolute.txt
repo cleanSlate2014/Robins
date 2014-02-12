@@ -1,0 +1,13 @@
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\bin\Debug\resource_tutorial.exe.config
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\bin\Debug\resource_tutorial.exe
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\bin\Debug\resource_tutorial.pdb
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.csprojResolveAssemblyReference.cache
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\MainWindow.baml
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\MainWindow.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\App.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial_MarkupCompile.cache
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.g.resources
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.Properties.Resources.resources
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.csproj.GenerateResource.Cache
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.exe
+c:\users\robins\documents\visual studio 2012\Projects\resource_tutorial\resource_tutorial\obj\Debug\resource_tutorial.pdb
