@@ -1,8 +1,0 @@
-﻿<Window x:Class="WpfApplication25.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Background="Brown" Name="xx" Click="xx_Click_1" >button</Button>
-    </Grid>
-</Window>

@@ -1,1 +1,0 @@
-c:\users\robins\documents\visual studio 2012\Projects\WpfApplication20\WpfApplication20\bin\Debug\WpfApplication20.exe.config
