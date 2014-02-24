@@ -1,0 +1,15 @@
+﻿<Window 
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ 
+       Title="custom_template" Height="300" Width="600" >
+  
+        <Grid>
+        <Button Template="{StaticResource ResourceKey=InnerDropShadow}"  Width="80" Margin="256,85,256,121"/>
+     
+            <!--
+            <Rectangle Fill="#f5f5f5" HorizontalAlignment="Left"  Height="20"  Stroke="#f1f1f1" VerticalAlignment="Center" MinWidth="80" Width="200" Margin="200,86,0,164" />
+        <Rectangle Fill="#428bca" Margin="200,86,0,164" HorizontalAlignment="Left" Height="20" VerticalAlignment="Center" MinWidth="80" Width="80" />-->
+
+    </Grid>
+</Window> 
