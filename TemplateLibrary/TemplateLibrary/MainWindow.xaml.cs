@@ -25,17 +25,7 @@ namespace TemplateLibrary
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine(((Color)xxx.Background.GetValue(SolidColorBrush.ColorProperty)).A+"\n");
-            Console.WriteLine(((Color)xxx.Background.GetValue(SolidColorBrush.ColorProperty)).B);
-            Console.WriteLine(((Color)xxx.Background.GetValue(SolidColorBrush.ColorProperty)).G);
-            Colorpicker my_color = new Colorpicker(xxx.Background);
-            Console.WriteLine(((Color)my_color.lighter().GetValue(SolidColorBrush.ColorProperty)).B);
-            Console.WriteLine(((Color)my_color.lighter().GetValue(SolidColorBrush.ColorProperty)).G);
-            Console.WriteLine(((Color)my_color.lighter().GetValue(SolidColorBrush.ColorProperty)).R);
-            xxx.Background = my_color.lighter();
-            Console.WriteLine(((Color)xxx.Background.GetValue(SolidColorBrush.ColorProperty)).B);
-            Console.WriteLine(((Color)xxx.Background.GetValue(SolidColorBrush.ColorProperty)).G);
-
+          
         }
     }
 
