@@ -1,0 +1,16 @@
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\CustomControlsLibrary.exe.config
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\CustomControlsLibrary.exe
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\CustomControlsLibrary.pdb
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.csprojResolveAssemblyReference.cache
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\Dictionary1.baml
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\MainWindow.baml
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\App.baml
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\Dictionary1.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\MainWindow.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\App.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary_MarkupCompile.cache
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.g.resources
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.Properties.Resources.resources
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.csproj.GenerateResource.Cache
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.exe
+c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.pdb

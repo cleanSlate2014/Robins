@@ -1,0 +1,31 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
+        x:Class="TemplateLibrary.MainWindow"
+        Title="MainWindow" Height="350" Width="525" >
+  
+    
+    <Grid >
+        <Button Background="#428bca" x:Name="xxx"></Button>
+        <Canvas>
+        
+            <Menu Width="1390" Height="20" Background="Black"  VerticalAlignment="Center"  Foreground="White" x:Name="black_magic">
+
+                <MenuItem Header="_FILE" Template="{DynamicResource MenuItemControlTemplate1}">
+                    <MenuItem Header="_new"  />
+                    <MenuItem Header="_save"/>
+                </MenuItem>
+               
+                <MenuItem Header="_EDIT" Template="{DynamicResource MenuItemControlTemplate1}">
+                    <MenuItem Header="_Copy"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="_VIEW" Template="{DynamicResource MenuItemControlTemplate1}" />
+                <MenuItem Header="_HELP" Template="{DynamicResource MenuItemControlTemplate1}" />
+                <MenuItem Header="_TOOLS"  Template="{DynamicResource MenuItemControlTemplate1}" />
+
+            </Menu>
+        </Canvas>
+    </Grid>
+
+</Window>

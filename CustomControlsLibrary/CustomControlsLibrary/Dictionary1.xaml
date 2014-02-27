@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="CustomControlsLibrary.Dictionary1">
+    
+    <!--Style for button start here-->
+    <!--  <Style  x:Key="myButtonStyle" TargetType="Border">
+      <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ButtonDown" />
+        <EventSetter Event="MouseLeftButtonUp" Handler="ButtonUp" />
+        <EventSetter Event="Border.MouseEnter" Handler="ButtonEnter" />
+        <EventSetter Event="Border.MouseLeave" Handler="ButtonLeave"/>
+       
+    </Style>-->
+
+    <!--Style for myButtonStyle ends here-->
+    
+    <!--Control Tamplate for button start here-->
+    <ControlTemplate TargetType="Button" x:Key="buttonPrimary">
+        <Grid Width="{TemplateBinding Width}" >
+            <Border Height="35" Width="{TemplateBinding Width}"    Background="{TemplateBinding Background}" CornerRadius="3" Loaded="borderLoaded"  x:Name="myButton">
+                    <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                   
+                        <TextBlock.Foreground>
+                    White
+                </TextBlock.Foreground>
+                <TextBlock.FontSize>14</TextBlock.FontSize>
+                <TextBlock.FontFamily>Helvetica Neue</TextBlock.FontFamily>
+                   
+                </ContentPresenter>
+            </Border>
+        </Grid>
+    </ControlTemplate> 
+
+    
+</ResourceDictionary>
