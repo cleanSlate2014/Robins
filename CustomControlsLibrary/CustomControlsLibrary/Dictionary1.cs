@@ -22,6 +22,9 @@ namespace CustomControlsLibrary
 
    partial class Dictionary1
     {
+        
+
+
        private void ButtonDown(object sender, RoutedEventArgs e)
        {
            Console.WriteLine("ButtonDown");
@@ -164,17 +167,163 @@ namespace CustomControlsLibrary
            Colorpicker colorPicker = new Colorpicker(itemColor);
            rect.Fill = colorPicker.lighter();
        }
+
+
+
+
+
+       private void RadioMouseEnter(object sender,RoutedPropertyChangedEventArgs<CustomRadioButton> e)
+       {
+           Console.WriteLine("RadioButton Mouse Enter/GotFocused");
+           RadioButton radioButton = sender as RadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           radioButton.Background = colorPicker.dark();
+       }
+
+
+
+
+
+       private void RadioMouseLeave(object sender, RoutedEventArgs e)
+       {
+           Console.WriteLine("RadioButton Mouse Leave/FocusLost");
+           RadioButton radioButton = sender as RadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           radioButton.Background = colorPicker.light();
+       }
+
+       //Event for RadioLeftButtonDownEnable..
+       private void RadioMouseDownEnable(object sender, RoutedEventArgs e)
+       {
+           Console.WriteLine("RadioButton MouseDown Enable");
+           CustomRadioButton radioButton = sender as CustomRadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           //Storing previous value of RadioButton value
+           radioButton.EnableColor = radioColor;
+           radioButton.Background = colorPicker.darker();
+       }
+
+
+
+       //Event for RadioLeftButtonUpEnable..
+       private void RadioMouseUpEnable(object sender, RoutedEventArgs e)
+       {
+           Console.WriteLine("RadioButton MouseUp Enable");
+           CustomRadioButton radioButton = sender as CustomRadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           //radioButton.Background = colorPicker.lighter();
+           if (radioButton.RadioType == "Primary")
+           {
+               //Converting back to Primary color
+               Console.WriteLine(radioButton.DisableColor);
+               radioButton.Background = new SolidColorBrush(Color.FromRgb(66, 139, 202));
+               //Now changing the DisableButton Color new SolidColorBrush(Color.FromRgb(239, 239, 240))
+               radioButton.DisableColor =  Brushes.Red;
+               Console.WriteLine(radioButton.DisableColor);
+           }
+       }
+
+   
+       //Event for RadioLeftButtonDisable..
+       private void RadioMouseDownDisable(object sender, RoutedEventArgs e)
+       {
+           Console.WriteLine("RadioButton MouseDown Disable");
+           RadioButton radioButton = sender as RadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           radioButton.Background = colorPicker.darker();
+       }
+
+
+       //Event for RadioLeftButtonDisable..
+       private void RadioMouseUpDisable(object sender, RoutedEventArgs e)
+       {
+           Console.WriteLine("RadioButton MouseDown Disable");
+           CustomRadioButton radioButton = sender as CustomRadioButton;
+           Brush radioColor = radioButton.Background;
+           Colorpicker colorPicker = new Colorpicker(radioColor);
+           if (radioButton.RadioType == "Primary")
+           {
+               //Converting back to Primary color
+               Console.WriteLine("Disabled Background Color\n");
+               Console.WriteLine(radioButton.Background);
+               radioButton.Background = Brushes.Gray;
+               //Now changing the DisableButton Color new SolidColorBrush(Color.FromRgb(239, 239, 240))
+               radioButton.EnableColor = new SolidColorBrush(Color.FromRgb(66, 139, 202));
+               
+           }
+           
+       }
+
+
+    }//Partial class Dictionary1 Ends here..   
+
+
+   //-----------------------------------------Events for RadioButton Start Here-----------------------------------------
+   class CustomRadioButton : RadioButton
+   {
+       
+
+       public static  DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
+       public static  DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
+       public static  DependencyProperty RadioTypeProperty = DependencyProperty.Register("RadioType", typeof(String), typeof(CustomRadioButton), new FrameworkPropertyMetadata(default(String)) );
+     
+       public CustomRadioButton() : base()
+       {
+          //Just call the base class constructor
+       }
+
+
+       public Brush EnableColor
+       {
+           get
+           { return (Brush)GetValue(EnableColorProperty); }
+
+           set
+           { 
+               SetValue(EnableColorProperty,value);
+           }
+
+       }
+
+
+
+       public String RadioType
+       {
+           get
+           { return (String)GetValue(RadioTypeProperty); }
+
+           set
+           {
+               SetValue(RadioTypeProperty, value);
+           }
+
+       }
+
+
+
+      public Brush DisableColor
+       {
+           get
+           { return (Brush)GetValue(DisableColorProperty); }
+
+           set
+           { 
+               SetValue(DisableColorProperty,value);
+           }
+
+       }
+
+
+
       
-
-    }//Partial class Dictionary1 Ends here
-
-
-
-  
+   }
+   //CustomRadioButton Class ends here...
 
 
 
-    
-    
-    
 }

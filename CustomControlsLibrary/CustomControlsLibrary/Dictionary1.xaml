@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:lib="clr-namespace:CustomControlsLibrary"
+                    xmlns:local="clr-namespace:CustomControlsLibrary"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
                     x:Class="CustomControlsLibrary.Dictionary1">
     
@@ -70,9 +70,6 @@
         <EventSetter Event="MenuItem.GotKeyboardFocus" Handler="MenuItemHighlighted" />
         <EventSetter Event="LostKeyboardFocus" Handler="FocusLost" />
       
-        
-
-
         <Setter Property="FontFamily" Value="Helvetica Neue" />
         <Setter Property="Template" >
             <Setter.Value>
@@ -207,16 +204,20 @@
         <Setter Property="Background" Value="#d9534f" />
         <Setter Property="Foreground" Value="White"/>
     </Style>
+    
+    
                                         <!--Style for MenuBar region Ends here-->
 
-                                        <!--Style for RadioButton Start here-->
-    <Style TargetType="RadioButton" x:Key="RadioButtonBasic">
+   
+
+    <!--Style for RadioButton Start here-->
+    <Style TargetType="RadioButton" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal" >
-                        <Button Style="{DynamicResource RadioButtonEnable}" Background="{TemplateBinding Background}" Height="30" Width="80" >Enable</Button>
-                        <Button Style="{DynamicResource RadioButtonDisable}" Background="#efeff0"  Height="30" Width="80" >Disable</Button>
+                        <local:CustomRadioButton Style="{DynamicResource RadioButtonEnable}"  DisableColor="#efeff0" EnableColor="#428bca" x:Name="radioEnable"   Background="{Binding ElementName=radioDisable,  Path=EnableColor}"  RadioType="Primary"   Height="25" Width="60">Enable</local:CustomRadioButton>
+                        <local:CustomRadioButton Style="{DynamicResource RadioButtonDisable}" x:Name="radioDisable"   Background="{Binding ElementName=radioEnable,Path=DisableColor}" EnableColor="#428bca" RadioType="Primary"   Height="25" Width="60" Opacity="0.7" >Disable</local:CustomRadioButton>
                     </StackPanel>   
                 </ControlTemplate>
             </Setter.Value>
@@ -224,12 +225,13 @@
     </Style>
     
     <!--Another style for modifying look of Radio-Button Enable-->
-    <Style TargetType="Button" x:Key="RadioButtonEnable">
+    <Style TargetType="local:CustomRadioButton" x:Key="RadioButtonEnable">
+
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid >
-                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="11,0,0,11">
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
+                        <Border   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="10,0,0,10">
                             <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
                                 <TextBlock.Foreground>
                                     White
@@ -244,12 +246,13 @@
         </Setter>
     </Style>
     <!--Another style for modifying look of Radio-Button Disable-->
-    <Style TargetType="Button" x:Key="RadioButtonDisable">
+    <Style TargetType="local:CustomRadioButton" x:Key="RadioButtonDisable">
+     
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="RadioButton">
                     <Grid>
-                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="0,11,11,0">
+                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="0,10,10,0">
                             <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
                                 <TextBlock.Foreground>
                                     Black
@@ -263,9 +266,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style  TargetType="RadioButton" BasedOn="{StaticResource RadioButtonBasic}">
-        <Setter Property="Background" Value="#5cb85c" />
-    </Style>
-
+   
 
 </ResourceDictionary>
