@@ -69,7 +69,9 @@
         <EventSetter Event="MenuItem.MouseLeave" Handler="MenuMouseLeave"/>
         <EventSetter Event="MenuItem.GotKeyboardFocus" Handler="MenuItemHighlighted" />
         <EventSetter Event="LostKeyboardFocus" Handler="FocusLost" />
+      
         
+
 
         <Setter Property="FontFamily" Value="Helvetica Neue" />
         <Setter Property="Template" >
@@ -77,26 +79,29 @@
                 <ControlTemplate  TargetType="MenuItem">
                     <Grid SnapsToDevicePixels="True">
                         <Rectangle x:Name="OuterBorder" RadiusY="1" RadiusX="1"/>
-                        <Rectangle x:Name="Bg" Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" MouseLeftButtonDown="ItemMouseDown" MouseLeftButtonUp="ItemMouseUp" MouseEnter="MouseEnterItem" MouseLeave="MouseLeaveItem"   Margin="1"   RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
+                        <Rectangle x:Name="Bg" Fill="{Binding Path=Background, RelativeSource={RelativeSource  AncestorType=Menu}}" MouseLeftButtonDown="ItemMouseDown" MouseLeftButtonUp="ItemMouseUp" MouseEnter="MouseEnterItem" MouseLeave="MouseLeaveItem"   Margin="1"   RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
                         <Rectangle x:Name="InnerBorder" Margin="2"  />
                         <DockPanel>
                             <ContentPresenter x:Name="Icon" Content="{TemplateBinding Icon}" ContentSource="Icon" Margin="4,0,6,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                             <Path x:Name="GlyphPanel" Data="M0,5.1L1.7,5.2 3.4,7.1 8,0.4 9.2,0 3.3,10.8z" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center"/>
-                            <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <TextBlock.FontSize>12</TextBlock.FontSize>
+                                <TextBlock.LineHeight>1.42</TextBlock.LineHeight>
+                            </ContentPresenter>
                         </DockPanel>
-                        <Popup  x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
-                            <Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent">
+                        <Popup  x:Name="PART_Popup"  AllowsTransparency="True"   Focusable="False" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"  Placement="Bottom" VerticalOffset="-1">
+                            <Themes:SystemDropShadowChrome x:Name="Shdw" Color="Gray">
                                 <Border x:Name="SubMenuBorder"   Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.8">
-                                    <ScrollViewer x:Name="SubMenuScrollViewer" Margin="1,0" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ScrollViewer x:Name="SubMenuScrollViewer"  Margin="1,0" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="0">
                                                 <!--Submenu item content rectangle box. changing its opactiy to 0.6-->
                                                 <Rectangle x:Name="OpaqueRect" Fill= "{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9"  Height="{Binding ActualHeight, ElementName=SubMenuBorder}" Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
                                             </Canvas>
-                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.7" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
-                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.7" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
-                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.7" HorizontalAlignment="Left" Margin="30,2,0,2" Width="1"/>
-                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="True" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
+                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="29,2,0,8" Width="1"/>
+                                            <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="30,2,0,8" Width="1"/>
+                                            <ItemsPresenter x:Name="ItemsPresenter"  KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="True" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
                                         </Grid>
                                     </ScrollViewer>
                                 </Border>
@@ -116,35 +121,36 @@
                                 <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                             </Trigger>
                             <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
-                                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
-                                <Setter Property="Color" TargetName="Shdw" Value="#71000000"/>
+                                <Setter Property="Margin" TargetName="Shdw" Value="0,0,3,3"/>
+                                <Setter Property="Color" TargetName="Shdw" Value="#30000000"/>
                             </Trigger>
 
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="Stroke" TargetName="Bg" Value="#E0717070"/>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Stroke" TargetName="Bg" Value="#20717070"/>
+                            <Setter Property="Fill" TargetName="Bg">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#20717070" Offset="0"/>
+                                        <GradientStop Color="#20717070" Offset="0.75"/>
+                                        <GradientStop Color="#50717070" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+
+                        <Trigger Property="IsSubmenuOpen" Value="True">
+                                <Setter Property="Stroke" TargetName="Bg" Value="Transparent"/>
                                 <Setter Property="Fill" TargetName="Bg">
                                     <Setter.Value>
-                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                            <GradientStop Color="#28717070" Offset="0"/>
-                                            <GradientStop Color="#50717070" Offset="0.75"/>
-                                            <GradientStop Color="#90717070" Offset="1"/>
+                                        <LinearGradientBrush  EndPoint="1,1" StartPoint="0,0">
+                                        <GradientStop Color="#28c1bfbf" Offset="0"/>
+                                        <GradientStop Color="#28c1bfbf" Offset="0.75"/>
+                                        <GradientStop Color="#28c1bfbf" Offset="1"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
-                                
-                            </Trigger>
-                            <Trigger Property="IsSubmenuOpen" Value="True">
-                                <Setter Property="Stroke" TargetName="Bg" Value="Red"/>
-                                <Setter Property="Fill" TargetName="Bg">
-                                    <Setter.Value>
-                                        <LinearGradientBrush x:Name="rob" EndPoint="0,1" StartPoint="0,0">
-                                            <GradientStop Color="#28717070" Offset="0"/>
-                                            <GradientStop Color="#28717070" Offset="0.75"/>
-                                            <GradientStop Color="#28717070" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Stroke" TargetName="InnerBorder" Value="#50747272"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="#50d1d1d7"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Foreground" Value="#FF9A9A9A"/>
@@ -168,9 +174,10 @@
     </Style>
     <Style TargetType="Popup">
         <Setter Property="Margin" Value="0,15,0,0"/>
-        <Setter Property="Width" Value="130"/>
+        <Setter Property="Width" Value="170"/>
        
     </Style>
+   
    
     <Style TargetType="Menu" x:Key="MenuPrimary">
         <!--Menu style for basic menu-->
@@ -199,6 +206,65 @@
         <!--Menu style for basic menu-->
         <Setter Property="Background" Value="#d9534f" />
         <Setter Property="Foreground" Value="White"/>
+    </Style>
+                                        <!--Style for MenuBar region Ends here-->
+
+                                        <!--Style for RadioButton Start here-->
+    <Style TargetType="RadioButton" x:Key="RadioButtonBasic">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel Orientation="Horizontal" >
+                        <Button Style="{DynamicResource RadioButtonEnable}" Background="{TemplateBinding Background}" Height="30" Width="80" >Enable</Button>
+                        <Button Style="{DynamicResource RadioButtonDisable}" Background="#efeff0"  Height="30" Width="80" >Disable</Button>
+                    </StackPanel>   
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Another style for modifying look of Radio-Button Enable-->
+    <Style TargetType="Button" x:Key="RadioButtonEnable">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid >
+                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="11,0,0,11">
+                            <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                                <TextBlock.Foreground>
+                                    White
+                                </TextBlock.Foreground>
+                                <TextBlock.FontSize>15</TextBlock.FontSize>
+                                <TextBlock.FontWeight>Bold</TextBlock.FontWeight>
+                            </ContentPresenter>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Another style for modifying look of Radio-Button Disable-->
+    <Style TargetType="Button" x:Key="RadioButtonDisable">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="0,11,11,0">
+                            <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                                <TextBlock.Foreground>
+                                    Black
+                                </TextBlock.Foreground>
+                                <TextBlock.FontSize>15</TextBlock.FontSize>
+                                <TextBlock.FontWeight>Bold</TextBlock.FontWeight>
+                            </ContentPresenter>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style  TargetType="RadioButton" BasedOn="{StaticResource RadioButtonBasic}">
+        <Setter Property="Background" Value="#5cb85c" />
     </Style>
 
 

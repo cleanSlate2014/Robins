@@ -74,6 +74,7 @@ namespace CustomControlsLibrary
            Brush menuItemColor = menuItem.Background;
            Colorpicker colorPicker = new Colorpicker(menuItemColor);
            menuItem.Background = colorPicker.darker();
+           
        }
 
 
@@ -163,6 +164,7 @@ namespace CustomControlsLibrary
            Colorpicker colorPicker = new Colorpicker(itemColor);
            rect.Fill = colorPicker.lighter();
        }
+      
 
     }//Partial class Dictionary1 Ends here
 

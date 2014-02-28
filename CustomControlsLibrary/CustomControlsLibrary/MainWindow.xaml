@@ -8,8 +8,8 @@
        
       
         <Canvas>
-            
-                <Menu Width="1390"   VerticalAlignment="Center" VerticalContentAlignment="Center" >
+
+            <Menu Width="525" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0"  VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
 
                 <MenuItem  Header="_FILE" VerticalAlignment="Bottom" VerticalContentAlignment="Center" >
                     <MenuItem  Header="_new"  />
@@ -25,17 +25,28 @@
                 <MenuItem Header="_TOOLS" />
 
             </Menu>
+            
         </Canvas>
-        <StackPanel VerticalAlignment="Center" >
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="10,54,-10,222" >
             <Button   Content="ButtonSuccess" Width="110"  Style="{StaticResource buttonSuccess}"   Margin="0,0,0,10"  />
             <Button   Content="ButtonPrimary" Width="110"  Style="{StaticResource buttonPrimary}" Margin="0,0,0,10"   />
             <Button   Content="ButtonInfo" Width="110"  Style="{StaticResource buttonInfo}" Margin="0,0,0,10"   />
             <Button   Content="ButtonDanger" Width="110"  Style="{StaticResource buttonDanger}" Margin="0,0,0,10"   />
             <Button   Content="ButtonWarning" Width="110"  Style="{StaticResource buttonWarning}" Margin="0,0,0,10"   />
             <Button Content="Button" Width="110" VerticalAlignment="Top"  Margin="0,0,0,10"  />
+            
+            
+            <CheckBox HorizontalAlignment="Right" Width="517">
+                <CheckBox Content="CheckBox" />
+            </CheckBox>
         </StackPanel>
-           
+
         
+            <RadioButton Margin="161,0,-161,0"></RadioButton>
+            
+        
+
+
 
 
 
