@@ -216,8 +216,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal" >
-                        <local:CustomRadioButton Style="{DynamicResource RadioButtonEnable}"  DisableColor="#efeff0" EnableColor="#428bca" x:Name="radioEnable"   Background="{Binding ElementName=radioDisable,  Path=EnableColor}"  RadioType="Primary"   Height="25" Width="60">Enable</local:CustomRadioButton>
-                        <local:CustomRadioButton Style="{DynamicResource RadioButtonDisable}" x:Name="radioDisable"   Background="{Binding ElementName=radioEnable,Path=DisableColor}" EnableColor="#428bca" RadioType="Primary"   Height="25" Width="60" Opacity="0.7" >Disable</local:CustomRadioButton>
+                        <local:CustomRadioButton Style="{DynamicResource RadioButtonEnable}"   DisableColor="#d7d7db" EnableColor="#428bca" x:Name="radioEnable"   Background="{Binding ElementName=radioDisable,  Path=EnableColor}"  RadioType="Primary"   Height="25" Width="60">Enable</local:CustomRadioButton>
+                        <local:CustomRadioButton Style="{DynamicResource RadioButtonDisable}" x:Name="radioDisable" DisableColor="Gray"   Background="{Binding ElementName=radioEnable,Path=DisableColor}" EnableColor="#428bca" RadioType="Primary"   Height="25" Width="60"  >Disable</local:CustomRadioButton>
                     </StackPanel>   
                 </ControlTemplate>
             </Setter.Value>
@@ -225,8 +225,11 @@
     </Style>
     
     <!--Another style for modifying look of Radio-Button Enable-->
-    <Style TargetType="local:CustomRadioButton" x:Key="RadioButtonEnable">
-
+    <Style TargetType="RadioButton" x:Key="RadioButtonEnable">
+        <EventSetter Event="RadioButton.MouseEnter" Handler="RadioMouseEnter" />
+        <EventSetter Event="RadioButton.MouseLeave" Handler="RadioMouseLeave" />
+        <EventSetter Event="RadioButton.PreviewMouseLeftButtonDown" Handler="RadioMouseDownEnable" />
+        <EventSetter Event="RadioButton.PreviewMouseLeftButtonUp" Handler="RadioMouseUpEnable" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
@@ -238,6 +241,7 @@
                                 </TextBlock.Foreground>
                                 <TextBlock.FontSize>15</TextBlock.FontSize>
                                 <TextBlock.FontWeight>Bold</TextBlock.FontWeight>
+                             
                             </ContentPresenter>
                         </Border>
                     </Grid>
@@ -246,8 +250,11 @@
         </Setter>
     </Style>
     <!--Another style for modifying look of Radio-Button Disable-->
-    <Style TargetType="local:CustomRadioButton" x:Key="RadioButtonDisable">
-     
+    <Style TargetType="RadioButton" x:Key="RadioButtonDisable">
+        <EventSetter Event="RadioButton.MouseEnter" Handler="RadioMouseEnter" />
+        <EventSetter Event="RadioButton.MouseLeave" Handler="RadioMouseLeave" />
+        <EventSetter Event="RadioButton.PreviewMouseLeftButtonDown" Handler="RadioMouseDownDisable" />
+        <EventSetter Event="RadioButton.PreviewMouseLeftButtonUp" Handler="RadioMouseUpDisable" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
@@ -255,7 +262,7 @@
                         <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="0,10,10,0">
                             <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
                                 <TextBlock.Foreground>
-                                    Black
+                                    White
                                 </TextBlock.Foreground>
                                 <TextBlock.FontSize>15</TextBlock.FontSize>
                                 <TextBlock.FontWeight>Bold</TextBlock.FontWeight>

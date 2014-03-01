@@ -29,7 +29,7 @@ namespace CustomControlsLibrary
         //Class for lightening or darkening the color..
         public Colorpicker(Brush color)
         {
-
+            
             a = ((Color)color.GetValue(SolidColorBrush.ColorProperty)).A;
             g = ((Color)color.GetValue(SolidColorBrush.ColorProperty)).G;
             r = ((Color)color.GetValue(SolidColorBrush.ColorProperty)).R;
