@@ -217,13 +217,16 @@ namespace CustomControlsLibrary
            Colorpicker colorPicker = new Colorpicker(radioColor);
            radioButton.Background = colorPicker.lighter();
            Console.WriteLine(radioButton.Disabled);
-           if (radioButton.Disabled)
+           if (radioButton.Disabled == true)
            {
                Console.WriteLine("Radio button mouseup is writing new values");
-               radioButton.Background = Brushes.Black;
+               Console.WriteLine(radioButton.Background);
+               radioButton.Background = radioButton.InitialValue;
+               //radioButton.Background = radioButton.EnableColor;
                radioButton.DisableColor = new SolidColorBrush(Color.FromRgb(215, 215, 219));
+               Console.WriteLine(radioButton.Background);
                radioButton.Disabled = false;
-              
+               Console.WriteLine(radioButton.Disabled);
            }
        }
 
@@ -247,17 +250,20 @@ namespace CustomControlsLibrary
            Brush radioColor = radioButton.Background;
            Colorpicker colorPicker = new Colorpicker(radioColor);
            radioButton.Background = colorPicker.lighter();
+           Console.WriteLine(radioButton.Disabled);
            if (radioButton.Disabled == false)
            {
                //Converting back to Primary color
                radioButton.Disabled = true;
                Console.WriteLine("Disabled Background Color\n");
                Console.WriteLine(radioButton.EnableColor);
+               //radioButton.Background = new SolidColorBrush(Color.FromRgb(66,139,202)) ;
                radioButton.Background = radioButton.EnableColor;
                Console.WriteLine(radioButton.EnableColor);
                //Now changing the DisableButton Color new SolidColorBrush(Color.FromRgb(239, 239, 240))
                radioButton.EnableColor = new SolidColorBrush(Color.FromRgb(215,215,219));
                radioButton.Disabled = true;
+               Console.WriteLine(radioButton.Disabled);
 
               
            }
@@ -272,8 +278,9 @@ namespace CustomControlsLibrary
    class CustomRadioButton : RadioButton
    {
        
-       private Boolean _disable = false;
-       public static DependencyProperty DisabledProperty = DependencyProperty.Register("Disabled", typeof(Boolean), typeof(CustomRadioButton), new PropertyMetadata(default(Boolean)));
+       //private  Boolean _disable = false;
+       public static  DependencyProperty InitialValueProperty = DependencyProperty.Register("InitialValue",typeof(Brush),typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
+       public static  DependencyProperty DisabledProperty = DependencyProperty.Register("Disabled", typeof(Boolean), typeof(CustomRadioButton), new PropertyMetadata(default(Boolean)));
        public static  DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
        public static  DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
        public static  DependencyProperty RadioTypeProperty = DependencyProperty.Register("RadioType", typeof(String), typeof(CustomRadioButton), new FrameworkPropertyMetadata(default(String)) );
@@ -283,6 +290,18 @@ namespace CustomControlsLibrary
           //Just call the base class constructor
        }
 
+
+       public Brush InitialValue
+       {
+           get
+           {
+               return (Brush)GetValue(InitialValueProperty);
+           }
+           set
+           {
+               SetValue(InitialValueProperty,value);
+           }
+       }
 
        public Brush EnableColor
        {
@@ -298,8 +317,13 @@ namespace CustomControlsLibrary
 
        public Boolean Disabled
        {
-           get { return _disable; }
-           set { _disable = value; }
+           get
+           { return (Boolean)GetValue(DisabledProperty); }
+
+           set
+           {
+               SetValue(DisabledProperty, value);
+           }
        }
 
        public String RadioType

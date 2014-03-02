@@ -211,13 +211,36 @@
    
 
     <!--Style for RadioButton Start here-->
-    <Style TargetType="RadioButton" >
+    <Style TargetType="RadioButton" x:Key="myRadioButton" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal" >
-                        <local:CustomRadioButton Style="{DynamicResource RadioButtonEnable}"   DisableColor="#d7d7db" EnableColor="#428bca" x:Name="radioEnable"   Background="{Binding ElementName=radioDisable,  Path=EnableColor}"  RadioType="Primary"   Height="25" Width="60">Enable</local:CustomRadioButton>
-                        <local:CustomRadioButton Style="{DynamicResource RadioButtonDisable}" x:Name="radioDisable" DisableColor="Gray"   Background="{Binding ElementName=radioEnable,Path=DisableColor}" EnableColor="#428bca" RadioType="Primary"   Height="25" Width="60"  >Disable</local:CustomRadioButton>
+                        <local:CustomRadioButton 
+                            Style="{DynamicResource RadioButtonEnable}"  
+                            DisableColor="#d7d7db" 
+                            EnableColor="{TemplateBinding Background}"
+                            InitialValue="{TemplateBinding Background}"
+                            x:Name="radioEnable"
+                            Disabled="{Binding ElementName=radioDisable,Path=Disabled,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                            Background="{Binding ElementName=radioDisable,  Path=EnableColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                            RadioType="Primary"  
+                            Height="25" Width="60"
+                            >
+                            Enable
+                        </local:CustomRadioButton>
+                        <local:CustomRadioButton
+                            Style="{DynamicResource RadioButtonDisable}" 
+                            x:Name="radioDisable"
+                            DisableColor="#d7d7db"
+                            InitialValue ="#d7d7db"
+                            Background="{Binding ElementName=radioEnable,Path=DisableColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                            EnableColor="{Binding ElementName=radioEnable,Path=EnableColor,Mode=OneWay}"
+                            RadioType="Primary" 
+                            Height="25" Width="60"  
+                            >
+                            Disable
+                        </local:CustomRadioButton>
                     </StackPanel>   
                 </ControlTemplate>
             </Setter.Value>

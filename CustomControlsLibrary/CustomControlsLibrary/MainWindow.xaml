@@ -11,11 +11,6 @@
 
             <Menu Width="525" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0"  VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
 
-                <MenuItem  Header="_FILE" VerticalAlignment="Bottom" VerticalContentAlignment="Center" >
-                    <MenuItem  Header="_new"  />
-                    <MenuItem Header="_save"/>
-                </MenuItem>
-                
 
                 <MenuItem Header="_EDIT" >
                     <MenuItem Header="_Copy"></MenuItem>
@@ -23,6 +18,10 @@
                 <MenuItem Header="_VIEW"  />
                 <MenuItem Header="_HELP"  />
                 <MenuItem Header="_TOOLS" />
+                <MenuItem  Header="_FILE" VerticalAlignment="Bottom" VerticalContentAlignment="Center" >
+                    <MenuItem  Header="_new"  />
+                    <MenuItem Header="_save"/>
+                </MenuItem>
 
             </Menu>
             
@@ -36,12 +35,14 @@
             <Button Content="Button" Width="110" VerticalAlignment="Top"  Margin="0,0,0,10"  />
             
         </StackPanel>
-        <RadioButton />
+        <RadioButton Margin="52,118,-52,-118" IsChecked="False" />
+        <RadioButton Margin="52,118,-52,-118" Style="{StaticResource myRadioButton}"  Background="Red" IsChecked="True" />
+        <RadioButton Margin="52,78,-52,-78" Style="{StaticResource myRadioButton}"  Background="#428bca" IsChecked="True" />
 
-
-
-
-
+        <RadioButton Margin="52,41,-52,-41" Style="{StaticResource myRadioButton}"  Background="#5cb85c" IsChecked="True" />
+        <RadioButton Margin="180,41,-180,-41" Style="{StaticResource myRadioButton}"  Background="Black" IsChecked="True" />
+        <RadioButton Margin="180,78,-180,-78" Style="{StaticResource myRadioButton}"  Background="#5bc0de" IsChecked="True" />
+        <RadioButton Margin="180,118,-180,-118" Style="{StaticResource myRadioButton}"  Background="#f0ad4e" IsChecked="True" />
 
 
 
