@@ -38,7 +38,7 @@
             
         </StackPanel>
        
-        <libs:SwitchButton Background="#428bca" Height="30" Width="120"     Margin="157,123,240,167" Style="{DynamicResource mybutton}" ></libs:SwitchButton>
+            <libs:SwitchButton Background="#428bca" Height="30" Width="120"     Margin="157,123,240,167" Style="{DynamicResource mybutton}" ></libs:SwitchButton>
        
        
 

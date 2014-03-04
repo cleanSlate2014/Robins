@@ -221,7 +221,7 @@
                                        InitialEnabledValue="{TemplateBinding Background}"
                                        EnableColor="{Binding Path=EnableColor, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
                                        Check="{TemplateBinding Check}"
-                                       Loaded="radioButtonLoaded" 
+                                  
                                        Style="{DynamicResource mystyle}"
                                        >
                         <Border x:Name="EnableButton" HorizontalAlignment="Left" Tag="Enable"
@@ -237,10 +237,11 @@
                     </local:CustomPanel>
                     <ControlTemplate.Resources>
                         <Style TargetType="StackPanel" x:Key="mystyle">
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="RadioButtonDown" />
-                            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="RadioButtonUp" />
                             <EventSetter Event="MouseEnter" Handler="RadioButtonEnter" />
                             <EventSetter Event="MouseLeave" Handler="RadioButtonLeave" />
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="RadioButtonDown" />
+                            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="RadioButtonUp" />
+                            
                         </Style>
                     </ControlTemplate.Resources>
                 </ControlTemplate>
@@ -251,10 +252,9 @@
         <Setter Property="TextBlock.FontSize" Value="14"/>
         <Setter Property="TextBlock.FontWeight" Value="SemiBold" />
         <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
-        <Setter Property="EnableColor" Value="{TemplateBinding Background}" />
+        <Setter Property="EnableColor" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=TwoWay}" />
         <Setter Property="DisableColor" Value="#cacad1" />
-        <!--Setting the default value for switchButton-->
-        <Setter Property="Check" Value="False" />
+      
 
         <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
     </Style>

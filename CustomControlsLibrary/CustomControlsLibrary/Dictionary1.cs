@@ -223,19 +223,65 @@ namespace CustomControlsLibrary
        }
 
 
-       private void RadioButtonOnLoad(object sender,RoutedEventArgs e)
-       {
-         
-       }
+     
    
 
        private void RadioButtonUp(object sender, RoutedEventArgs e)
        {
+           Console.WriteLine("In button up property");
+           //Checking the IsChecked property....
+           CustomPanel stackPanel = sender as CustomPanel;
+           Border radioButtonEnable = stackPanel.FindName("EnableButton") as Border;
+           Border radioButtonDisable = stackPanel.FindName("DisableButton") as Border;
+           Border radioButton;
+           Boolean EnabledFlag = true;
            
+           try
+           {
+               ContentPresenter myContent = e.Source as ContentPresenter;
+              
+               if ((String)myContent.Tag == "Disable")
+               {
+                   EnabledFlag = false;
+               }
+               else
+               {
+                   EnabledFlag = true;
+               }
+           }
+           catch (Exception)
+           {
+               Border myBorder = e.Source as Border;
+               if ((String)myBorder.Tag == "Disable")
+               {
+                   EnabledFlag = false;
+               }
+               else
+               {
+                   EnabledFlag = true;
+               }
+
+           }
+           if (EnabledFlag)
+           {
+               radioButton = radioButtonEnable;
+               Colorpicker colorPicker = new Colorpicker(radioButton.Background);
+               radioButton.Background = colorPicker.lighter();
+
+           }
+           else
+           {
+               radioButton = radioButtonDisable;
+               Colorpicker colorPicker = new Colorpicker(radioButton.Background);
+               radioButton.Background = colorPicker.lighter();
+
+           }
+
        }
 
        private void RadioButtonEnter(object sender, RoutedEventArgs e)
        {
+        
         
        }
 
@@ -245,22 +291,14 @@ namespace CustomControlsLibrary
        }
 
        //Creating a loaded event
-       private void radioButtonLoaded(object sender, RoutedEventArgs e)
+       private void RadioButtonOnLoad(object sender, RoutedEventArgs e)
        {
            Console.WriteLine("I am loaded");
-           CustomPanel myPanel = sender as CustomPanel;
+           SwitchButton myPanel = sender as SwitchButton;
            //myPanel.IsChecked = true;
            Console.WriteLine(myPanel.Check);
+           myPanel.Check = false;
 
-           if (myPanel.Check)
-           {
-               myPanel.Check = true;
-           }
-           else
-           {
-               myPanel.Check = false;
-           }
-           
        }
 
 
@@ -271,11 +309,11 @@ namespace CustomControlsLibrary
 
    class SwitchButton : RadioButton
    {
-       public static DependencyProperty CheckProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(SwitchButton), new FrameworkPropertyMetadata((new PropertyChangedCallback(OnCheckedChanged)) ));
-       public static DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
-       public static DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
-       public static DependencyProperty InitialEnabledValueProperty = DependencyProperty.Register("InitialEnabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
-       public static DependencyProperty InitialDisabledValueProperty = DependencyProperty.Register("InitialDisabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static readonly DependencyProperty CheckProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(SwitchButton), new PropertyMetadata(new PropertyChangedCallback(OnCheckedChanged)));
+       public static readonly DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static readonly DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static readonly DependencyProperty InitialEnabledValueProperty = DependencyProperty.Register("InitialEnabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static readonly DependencyProperty InitialDisabledValueProperty = DependencyProperty.Register("InitialDisabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
       
          public SwitchButton() : base()
        {
@@ -300,6 +338,15 @@ namespace CustomControlsLibrary
            //Checking the IsChecked property....
            Console.WriteLine("Checked value has been change..");
            SwitchButton myButton = sender as SwitchButton;
+           Console.WriteLine(myButton.Check);
+           if (!myButton.Check)
+           {
+               Console.WriteLine("Inside checked value  false..");
+               myButton.EnableColor = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+               myButton.DisableColor = myButton.Background;
+               Console.WriteLine(myButton.DisableColor);
+               Console.WriteLine(myButton.EnableColor);
+           }    
        
                
        }
@@ -368,7 +415,7 @@ namespace CustomControlsLibrary
 
    class CustomPanel : StackPanel
    {
-       public static DependencyProperty CheckProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(CustomPanel),new FrameworkPropertyMetadata(new PropertyChangedCallback(OnCheckedChanged))  );
+       public static DependencyProperty CheckProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(CustomPanel),new PropertyMetadata(default(Boolean), new PropertyChangedCallback(OnCheckedChanged))  );
        public static DependencyProperty DisabledProperty = DependencyProperty.Register("Disabled", typeof(Boolean), typeof(CustomPanel), new PropertyMetadata(default(Boolean)));
        public static DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
        public static DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
@@ -386,7 +433,7 @@ namespace CustomControlsLibrary
        {
            //Checking the IsChecked property....
 
-           Console.WriteLine("hey i am in checked");
+          /* Console.WriteLine("hey i am in checked");
           
            CustomPanel stackPanel = sender as CustomPanel;
            Console.WriteLine("HEy i am getting inside Ischecked  and the value is " + stackPanel.Check);
@@ -404,7 +451,7 @@ namespace CustomControlsLibrary
                stackPanel.DisableColor = stackPanel.InitialEnabledValue;
 
            }
-
+           */
            
        }
 
