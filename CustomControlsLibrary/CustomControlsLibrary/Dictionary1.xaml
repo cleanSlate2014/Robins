@@ -209,27 +209,29 @@
     <!--Style for MenuBar region Ends here-->
 
 
-    <!---NEW STYLE FOR RADIO BUTTON-->
-    <Style TargetType="local:SwitchButton" x:Key="mybutton">
+                                                           <!---NEW STYLE FOR SWITCHBUTTON Start here-->
+    
+    <Style TargetType="local:SwitchButton" x:Key="myRadiobutton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SwitchButton">
                     <local:CustomPanel x:Name="customPanel"
                                        Orientation="Horizontal"
-                                       DisableColor="{Binding Path=DisableColor, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                                       DisableColor="{Binding Path=DisableColor, RelativeSource={RelativeSource TemplatedParent}}"
                                        InitialDisabledValue="#cacad1"
                                        InitialEnabledValue="{TemplateBinding Background}"
-                                       EnableColor="{Binding Path=EnableColor, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
-                                       Check="{TemplateBinding Check}"
+                                       PrevCheck="{Binding Path=PrevCheck, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                                       EnableColor="{Binding Path=EnableColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Check="{Binding Path=Disabled, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
                                   
                                        Style="{DynamicResource mystyle}"
                                        >
                         <Border x:Name="EnableButton" HorizontalAlignment="Left" Tag="Enable"
                                 Background="{Binding Path=EnableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
-                                CornerRadius="6,0,0,6" Width="60" Height="30" >
+                                CornerRadius="6,0,0,6" Width="60" Height="30" MouseEnter="RadioButtonEnter" MouseLeave="RadioButtonLeave">
                             <ContentPresenter HorizontalAlignment="Center" Tag="Enable" VerticalAlignment="Center" Content="Enable" />
                         </Border>
-                        <Border x:Name="DisableButton"  Tag="Disable"  HorizontalAlignment="Right"
+                        <Border x:Name="DisableButton" Tag="Disable" HorizontalAlignment="Right" MouseEnter="RadioButtonEnter" MouseLeave="RadioButtonLeave"
                                 Background="{Binding Path=DisableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
                                 CornerRadius="0,6,6,0" Width="60" Height="30" >
                             <ContentPresenter HorizontalAlignment="Center" Tag="Disable" VerticalAlignment="Center" Content="Disable" />
@@ -237,8 +239,6 @@
                     </local:CustomPanel>
                     <ControlTemplate.Resources>
                         <Style TargetType="StackPanel" x:Key="mystyle">
-                            <EventSetter Event="MouseEnter" Handler="RadioButtonEnter" />
-                            <EventSetter Event="MouseLeave" Handler="RadioButtonLeave" />
                             <EventSetter Event="PreviewMouseLeftButtonDown" Handler="RadioButtonDown" />
                             <EventSetter Event="PreviewMouseLeftButtonUp" Handler="RadioButtonUp" />
                             
@@ -252,11 +252,54 @@
         <Setter Property="TextBlock.FontSize" Value="14"/>
         <Setter Property="TextBlock.FontWeight" Value="SemiBold" />
         <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
-        <Setter Property="EnableColor" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=TwoWay}" />
+        <Setter Property="EnableColor" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="DisableColor" Value="#cacad1" />
-      
+        <Setter Property="InitialEnabledValue" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="InitialDisabledValue" Value="#cacad1" />
 
         <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
+        
+
     </Style>
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonPrimary"> 
+        <Setter Property="Background" Value="#428bca" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonSuccess">
+        <Setter Property="Background" Value="#5cb85c" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonWarning">
+        <Setter Property="Background" Value="#f0ad4e" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonDanger">
+        <Setter Property="Background" Value="#d9534f" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonInfo">
+        <Setter Property="Background" Value="#5bc0de" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+
+    <Style BasedOn="{StaticResource myRadiobutton}" TargetType="local:SwitchButton" x:Key="SwitchButtonBasic">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="120" />
+    </Style>
+    
+                                                                <!--Style for SWITCHBUTTON Ends here-->
 
 </ResourceDictionary>

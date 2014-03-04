@@ -5,42 +5,47 @@
         
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-       
-      
+
+
         <Canvas>
 
-            <Menu Width="1390" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0"  VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
+            <Menu Width="1390" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0" VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
 
 
                 <MenuItem Header="_EDIT" >
                     <MenuItem Header="_Copy"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="_VIEW"  />
-                <MenuItem Header="_HELP"  />
+                <MenuItem Header="_VIEW" />
+                <MenuItem Header="_HELP" />
                 <MenuItem Header="_TOOLS" />
-                <MenuItem  Header="_FILE" VerticalAlignment="Bottom" VerticalContentAlignment="Center" >
-                    <MenuItem  Header="_new"  />
+                <MenuItem Header="_FILE" VerticalAlignment="Bottom" VerticalContentAlignment="Center" >
+                    <MenuItem Header="_new" />
                     <MenuItem Header="_save"/>
                 </MenuItem>
 
             </Menu>
-           
+
 
 
         </Canvas>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,54,-10,222" >
-            <Button   Content="ButtonSuccess" Width="110"  Style="{StaticResource buttonSuccess}"   Margin="0,0,0,10"  />
-            <Button   Content="ButtonPrimary" Width="110"  Style="{StaticResource buttonPrimary}" Margin="10,0,0,10"   />
-            <Button   Content="ButtonInfo" Width="110"  Style="{StaticResource buttonInfo}" Margin="10,0,0,10"   />
-            <Button   Content="ButtonDanger" Width="110"  Style="{StaticResource buttonDanger}" Margin="10,0,0,10"   />
-            <Button   Content="ButtonWarning" Width="110"  Style="{StaticResource buttonWarning}" Margin="10,0,0,10"   />
-            <Button Content="Button" Width="110" VerticalAlignment="Top"  Margin="0,0,0,10"  />
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal"  >
+            <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
+            <Button Content="ButtonPrimary" Width="110" Style="{StaticResource buttonPrimary}" Margin="10,0,0,10" />
+            <Button Content="ButtonInfo" Width="110" Style="{StaticResource buttonInfo}" Margin="10,0,0,10" />
+            <Button Content="ButtonDanger" Width="110" Style="{StaticResource buttonDanger}" Margin="10,0,0,10" />
+            <Button Content="ButtonWarning" Width="110" Style="{StaticResource buttonWarning}" Margin="10,0,0,10" />
+            <Button Content="Button" Width="110"  Margin="10,0,0,10" />
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,150,0,0" >
+            <libs:SwitchButton Style="{StaticResource SwitchButtonSuccess}" Disabled="True"  Margin="10,0,0,10"></libs:SwitchButton>
+            <libs:SwitchButton Style="{StaticResource SwitchButtonPrimary}" Disabled="False"  Margin="10,0,0,10" ></libs:SwitchButton>
+            <libs:SwitchButton  Style="{StaticResource SwitchButtonInfo}" Margin="10,0,0,10"></libs:SwitchButton>
+            <libs:SwitchButton  Style="{StaticResource SwitchButtonDanger}" Disabled="True" Margin="10,0,0,10" ></libs:SwitchButton>
+            <libs:SwitchButton  Style="{StaticResource SwitchButtonWarning}" Margin="10,0,0,10" ></libs:SwitchButton>
+            <libs:SwitchButton  Style="{StaticResource SwitchButtonBasic}" Margin="10,0,0,10" ></libs:SwitchButton>
             
         </StackPanel>
-       
-            <libs:SwitchButton Background="#428bca" Height="30" Width="120"     Margin="157,123,240,167" Style="{DynamicResource mybutton}" ></libs:SwitchButton>
-       
-       
 
 
 
