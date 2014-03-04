@@ -290,7 +290,7 @@ namespace CustomControlsLibrary
                     Console.WriteLine("I am inside enabled flag background");
                     Colorpicker colorPicker = new Colorpicker(radioButtonDisable.Background);
                     radioButtonEnable.Background = colorPicker.dark(); 
-                    radioButtonDisable.Background = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                    radioButtonDisable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
                     stackPanel.PrevCheck = false;
                    
                 }
@@ -299,7 +299,7 @@ namespace CustomControlsLibrary
                     Console.WriteLine("I am inside disabled flag background");
                     Colorpicker colorPicker = new Colorpicker(radioButtonEnable.Background);
                     radioButtonDisable.Background = colorPicker.dark() ;
-                    radioButtonEnable.Background = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                    radioButtonEnable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
 
                 }*/
             }
@@ -311,7 +311,7 @@ namespace CustomControlsLibrary
                     Console.WriteLine("I am inside enabled flag background");
                     Colorpicker colorPicker = new Colorpicker(radioButtonDisable.Background);
                     radioButtonEnable.Background = colorPicker.dark(); 
-                    radioButtonDisable.Background = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                    radioButtonDisable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
                 }*/
                 
                 if (EnabledFlag == false)
@@ -319,7 +319,7 @@ namespace CustomControlsLibrary
                     Console.WriteLine("I am inside disabled flag background");
                     Colorpicker colorPicker = new Colorpicker(radioButtonEnable.Background);
                     radioButtonDisable.Background = colorPicker.dark();
-                    radioButtonEnable.Background = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                    radioButtonEnable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
                     stackPanel.PrevCheck = true;
                     
                 }
@@ -439,12 +439,12 @@ namespace CustomControlsLibrary
             {
                 Console.WriteLine("I am inside disabled color");
                 myButton.DisableColor = myButton.Background;
-                myButton.EnableColor = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                myButton.EnableColor = new SolidColorBrush(Color.FromRgb(219, 219, 224));
             }
             else if ((myButton.Disabled == false) && (myButton.PrevCheck == true))
             {
                 Console.WriteLine("I am inside Enabled color");
-                myButton.DisableColor = new SolidColorBrush(Color.FromRgb(202, 202, 209));
+                myButton.DisableColor = new SolidColorBrush(Color.FromRgb(219, 219, 224));
                 myButton.EnableColor = myButton.Background;
 
             }

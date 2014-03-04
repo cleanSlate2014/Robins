@@ -218,7 +218,7 @@
                     <local:CustomPanel x:Name="customPanel"
                                        Orientation="Horizontal"
                                        DisableColor="{Binding Path=DisableColor, RelativeSource={RelativeSource TemplatedParent}}"
-                                       InitialDisabledValue="#cacad1"
+                                       InitialDisabledValue="#dbdbe0"
                                        InitialEnabledValue="{TemplateBinding Background}"
                                        PrevCheck="{Binding Path=PrevCheck, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
                                        EnableColor="{Binding Path=EnableColor, RelativeSource={RelativeSource TemplatedParent}}"
@@ -228,12 +228,12 @@
                                        >
                         <Border x:Name="EnableButton" HorizontalAlignment="Left" Tag="Enable"
                                 Background="{Binding Path=EnableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
-                                CornerRadius="6,0,0,6" Width="60" Height="30" MouseEnter="RadioButtonEnter" MouseLeave="RadioButtonLeave">
+                                CornerRadius="6,0,0,6" Width="49" Height="23" MouseEnter="RadioButtonEnter" MouseLeave="RadioButtonLeave">
                             <ContentPresenter HorizontalAlignment="Center" Tag="Enable" VerticalAlignment="Center" Content="Enable" />
                         </Border>
                         <Border x:Name="DisableButton" Tag="Disable" HorizontalAlignment="Right" MouseEnter="RadioButtonEnter" MouseLeave="RadioButtonLeave"
                                 Background="{Binding Path=DisableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
-                                CornerRadius="0,6,6,0" Width="60" Height="30" >
+                                CornerRadius="0,6,6,0" Width="49" Height="23" >
                             <ContentPresenter HorizontalAlignment="Center" Tag="Disable" VerticalAlignment="Center" Content="Disable" />
                         </Border>
                     </local:CustomPanel>
@@ -249,13 +249,13 @@
 
         </Setter>
         <Setter Property="TextBlock.Foreground" Value="White"/>
-        <Setter Property="TextBlock.FontSize" Value="14"/>
+        <Setter Property="TextBlock.FontSize" Value="12"/>
         <Setter Property="TextBlock.FontWeight" Value="SemiBold" />
         <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
         <Setter Property="EnableColor" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=OneWay}" />
-        <Setter Property="DisableColor" Value="#cacad1" />
+        <Setter Property="DisableColor" Value="#dbdbe0" />
         <Setter Property="InitialEnabledValue" Value="{Binding Path=Background,RelativeSource={RelativeSource Self},Mode=OneWay}" />
-        <Setter Property="InitialDisabledValue" Value="#cacad1" />
+        <Setter Property="InitialDisabledValue" Value="#dbdbe0" />
 
         <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
         
