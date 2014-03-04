@@ -301,5 +301,67 @@
     </Style>
     
                                                                 <!--Style for SWITCHBUTTON Ends here-->
+    
+                                                                <!--Style for  CheckBox withoutBoxes-->
+
+    <Style  TargetType="CheckBox" x:Key="CustomCheckBox">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}"/>
+        <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox" >
+                    <Border>
+                        <Grid>
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}"  />
+                            <Border>
+                                <Border.Background>
+                                    <VisualBrush Opacity="1.0" Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Path Name="path" Opacity="0.4" Data="M 0 5 L 3 10 10 0" Stroke="{Binding Path=Background,RelativeSource={RelativeSource TemplatedParent}}" StrokeThickness="1.6" 
+			StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="path" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="path" Property="Stroke" Value="{Binding Path=Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="path" Property="StrokeThickness" Value="2.5" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"  />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="19" />
+        <Setter Property="Height" Value="21" />
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxPrimary" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="#428bca" />
+        
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxSuccess" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="#5cb85c" />
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxInfo" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="#5bc0de" />
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxWarning" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="#f0ad4e" />
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxDanger" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="#d9534f" />
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxBasic" BasedOn="{StaticResource CustomCheckBox}">
+        <Setter Property="Background" Value="Black" />
+    </Style>
 
 </ResourceDictionary>

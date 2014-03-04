@@ -360,7 +360,41 @@ namespace CustomControlsLibrary
 
 
 
+        //-----------------------------------------------Events for radio button ends here-------------------------------------------------
+        private void CheckBoxMouseEnter(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            Console.WriteLine("Mouse Enter CheckBox");
 
+            Colorpicker colorPicker = new Colorpicker(checkBox.Background);
+            checkBox.Background = colorPicker.dark();
+        }
+
+        private void CheckBoxMouseLeave(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            Console.WriteLine("Mouse leave CheckBox");
+            
+            Colorpicker colorPicker = new Colorpicker(checkBox.Background);
+            checkBox.Background = colorPicker.light();
+        }
+
+        private void CheckBoxMouseDown(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            Console.WriteLine("Mouse Down CheckBox");
+            Colorpicker colorPicker = new Colorpicker(checkBox.Background);
+            checkBox.Background = colorPicker.darker();
+        }
+
+        private void CheckBoxMouseUp(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            Console.WriteLine("Mouse Up CheckBox");
+
+            Colorpicker colorPicker = new Colorpicker(checkBox.Background);
+            checkBox.Background = colorPicker.lighter();
+        }
 
     }//Partial class Dictionary1 Ends here..
 

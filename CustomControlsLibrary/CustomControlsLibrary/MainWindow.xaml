@@ -24,6 +24,7 @@
                 </MenuItem>
 
             </Menu>
+            
 
 
 
@@ -45,6 +46,14 @@
             <libs:SwitchButton  Style="{StaticResource SwitchButtonWarning}" Margin="10,0,0,10" ></libs:SwitchButton>
             <libs:SwitchButton  Style="{StaticResource SwitchButtonBasic}" Margin="10,0,0,10" ></libs:SwitchButton>
             
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Margin="0,23,0,0">
+            <CheckBox  Style="{StaticResource CheckBoxSuccess}"  Canvas.Left="115" Canvas.Top="46"/>
+            <CheckBox  Style="{StaticResource CheckBoxPrimary}"  Canvas.Left="135" Canvas.Top="46"/>
+            <CheckBox  Style="{StaticResource CheckBoxInfo}"  Canvas.Left="155" Canvas.Top="46"/>
+            <CheckBox  Style="{StaticResource CheckBoxDanger}"  Canvas.Left="175" Canvas.Top="46"/>
+            <CheckBox  Style="{StaticResource CheckBoxWarning}"  Canvas.Left="195" Canvas.Top="46"/>
+            <CheckBox  Style="{StaticResource CheckBoxBasic}"  Canvas.Left="215" Canvas.Top="46"/>
         </StackPanel>
 
 
