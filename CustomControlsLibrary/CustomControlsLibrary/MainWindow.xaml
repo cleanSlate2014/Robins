@@ -28,6 +28,7 @@
 
 
 
+
         </Canvas>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal"  >
             <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
@@ -55,7 +56,14 @@
             <CheckBox  Style="{StaticResource CheckBoxWarning}"  Canvas.Left="195" Canvas.Top="46"/>
             <CheckBox  Style="{StaticResource CheckBoxBasic}"  Canvas.Left="215" Canvas.Top="46"/>
         </StackPanel>
-
+        <StackPanel HorizontalAlignment="Center" Margin="0,23,130,0">
+            <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckSuccess}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+            <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckPrimary}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+            <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckInfo}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+            <CheckBox Content="CheckBox"  Margin="0,0,0,5" Style="{StaticResource CheckDanger}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+            <CheckBox Content="CheckBox"  Margin="0,0,0,5" Style="{StaticResource CheckWarning}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+            <CheckBox Content="CheckBox"  Margin="0,0,0,5"   IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
+        </StackPanel>
 
 
 
