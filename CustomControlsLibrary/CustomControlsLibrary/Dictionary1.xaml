@@ -14,7 +14,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Width="{TemplateBinding Width}" Height="35">
-                         <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="3"   x:Name="myButton">
+                         <Border   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="3"   x:Name="myButton">
                             <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
                                 <TextBlock.Foreground>
                                      White
@@ -209,93 +209,42 @@
                                         <!--Style for MenuBar region Ends here-->
 
    
-
-    <!--Style for RadioButton Start here-->
-    <Style TargetType="RadioButton" x:Key="myRadioButton" >
+                                         <!---NEW STYLE FOR RADIO BUTTON-->
+    <Style TargetType="local:SwitchButton" x:Key="mybutton">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
-                    <StackPanel Orientation="Horizontal" >
-                        <local:CustomRadioButton 
-                            Style="{DynamicResource RadioButtonEnable}"  
-                            DisableColor="#d7d7db" 
-                            EnableColor="{TemplateBinding Background}"
-                            InitialValue="{TemplateBinding Background}"
-                            x:Name="radioEnable"
-                            Disabled="{Binding ElementName=radioDisable,Path=Disabled,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                            Background="{Binding ElementName=radioDisable,  Path=EnableColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                            RadioType="Primary"  
-                            Height="25" Width="60"
-                            >
-                            Enable
-                        </local:CustomRadioButton>
-                        <local:CustomRadioButton
-                            Style="{DynamicResource RadioButtonDisable}" 
-                            x:Name="radioDisable"
-                            DisableColor="#d7d7db"
-                            InitialValue ="#d7d7db"
-                            Background="{Binding ElementName=radioEnable,Path=DisableColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                            EnableColor="{Binding ElementName=radioEnable,Path=EnableColor,Mode=OneWay}"
-                            RadioType="Primary" 
-                            Height="25" Width="60"  
-                            >
-                            Disable
-                        </local:CustomRadioButton>
-                    </StackPanel>   
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
-    <!--Another style for modifying look of Radio-Button Enable-->
-    <Style TargetType="RadioButton" x:Key="RadioButtonEnable">
-        <EventSetter Event="RadioButton.MouseEnter" Handler="RadioMouseEnter" />
-        <EventSetter Event="RadioButton.MouseLeave" Handler="RadioMouseLeave" />
-        <EventSetter Event="RadioButton.PreviewMouseLeftButtonDown" Handler="RadioMouseDownEnable" />
-        <EventSetter Event="RadioButton.PreviewMouseLeftButtonUp" Handler="RadioMouseUpEnable" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
-                    <Grid>
-                        <Border   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="10,0,0,10">
-                            <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
-                                <TextBlock.Foreground>
-                                    White
-                                </TextBlock.Foreground>
-                                <TextBlock.FontSize>15</TextBlock.FontSize>
-                                <TextBlock.FontWeight>Bold</TextBlock.FontWeight>
-                             
-                            </ContentPresenter>
+                <ControlTemplate TargetType="local:SwitchButton">
+                    <local:CustomPanel x:Name="customPanel"  Orientation="Horizontal" DisableColor="#cacad1" InitialDisabledValue="#cacad1"  InitialEnabledValue="{TemplateBinding Background}"  EnableColor="{TemplateBinding Background}" Check="{Binding Path=Check,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Loaded="radioButtonLoaded" Style="{DynamicResource mystyle}"   >
+                        <Border x:Name="EnableButton"   HorizontalAlignment="Left" Tag="Enable"  Background="{Binding Path=EnableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}" Width="60" Height="30" CornerRadius="6,0,0,6" >
+                            <ContentPresenter HorizontalAlignment="Center" Tag="Enable" VerticalAlignment="Center" Content="Enable" />
                         </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <!--Another style for modifying look of Radio-Button Disable-->
-    <Style TargetType="RadioButton" x:Key="RadioButtonDisable">
-        <EventSetter Event="RadioButton.MouseEnter" Handler="RadioMouseEnter" />
-        <EventSetter Event="RadioButton.MouseLeave" Handler="RadioMouseLeave" />
-        <EventSetter Event="RadioButton.PreviewMouseLeftButtonDown" Handler="RadioMouseDownDisable" />
-        <EventSetter Event="RadioButton.PreviewMouseLeftButtonUp" Handler="RadioMouseUpDisable" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
-                    <Grid>
-                        <Border  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="0,10,10,0">
-                            <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
-                                <TextBlock.Foreground>
-                                    White
-                                </TextBlock.Foreground>
-                                <TextBlock.FontSize>15</TextBlock.FontSize>
-                                <TextBlock.FontWeight>Bold</TextBlock.FontWeight>
-                            </ContentPresenter>
+                        <Border x:Name="DisableButton"   Background="{Binding Path=DisableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}" Tag="Disable" HorizontalAlignment="Right" Width="60" Height="30" CornerRadius="0,6,6,0" >
+                            <ContentPresenter HorizontalAlignment="Center" Tag="Disable" VerticalAlignment="Center" Content="Disable" />
                         </Border>
-                    </Grid>
+                    </local:CustomPanel>
+                    <ControlTemplate.Resources>
+                        <Style TargetType="StackPanel" x:Key="mystyle">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="RadioButtonDown" />
+                            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="RadioButtonUp" />
+                            <EventSetter Event="MouseEnter" Handler="RadioButtonEnter" />
+                            <EventSetter Event="MouseLeave" Handler="RadioButtonLeave" />
+                        </Style>
+                    </ControlTemplate.Resources>
                 </ControlTemplate>
             </Setter.Value>
+            
         </Setter>
+        <Setter Property="TextBlock.Foreground" Value="White"/>
+        <Setter Property="TextBlock.FontSize" Value="14"/>
+        <Setter Property="TextBlock.FontWeight" Value="SemiBold" />
+        <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
+        <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
+        <!--Setting the default value for switchButton-->
+        <Setter Property="Check" Value="False" />
+        <Setter Property="DisableColor" Value="#cacad1" />
+        <Setter Property="EnableColor" Value="{TemplateBinding Background}" />
+        <Setter Property="InitialEnabledValue" Value="{TemplateBinding Background}" />
+        <Setter Property="InitialDisabledValue" Value="#cacad1" />
     </Style>
-   
-
+      
 </ResourceDictionary>

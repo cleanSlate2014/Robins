@@ -9,7 +9,7 @@
       
         <Canvas>
 
-            <Menu Width="525" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0"  VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
+            <Menu Width="1390" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0"  VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
 
 
                 <MenuItem Header="_EDIT" >
@@ -24,7 +24,9 @@
                 </MenuItem>
 
             </Menu>
-            
+           
+
+
         </Canvas>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,54,-10,222" >
             <Button   Content="ButtonSuccess" Width="110"  Style="{StaticResource buttonSuccess}"   Margin="0,0,0,10"  />
@@ -35,14 +37,14 @@
             <Button Content="Button" Width="110" VerticalAlignment="Top"  Margin="0,0,0,10"  />
             
         </StackPanel>
-        <RadioButton Margin="52,118,-52,-118" IsChecked="False" />
-        <RadioButton Margin="52,118,-52,-118" Style="{StaticResource myRadioButton}"  Background="Red" IsChecked="True" />
-        <RadioButton Margin="52,78,-52,-78" Style="{StaticResource myRadioButton}"  Background="#428bca" IsChecked="True" />
+       
+        <libs:SwitchButton Background="#428bca" Height="30" Width="120"  Check="False"   Margin="157,123,240,167" Style="{StaticResource mybutton}" ></libs:SwitchButton>
+       
+       
 
-        <RadioButton Margin="52,41,-52,-41" Style="{StaticResource myRadioButton}"  Background="#5cb85c" IsChecked="True" />
-        <RadioButton Margin="180,41,-180,-41" Style="{StaticResource myRadioButton}"  Background="Black" IsChecked="True" />
-        <RadioButton Margin="180,78,-180,-78" Style="{StaticResource myRadioButton}"  Background="#5bc0de" IsChecked="True" />
-        <RadioButton Margin="180,118,-180,-118" Style="{StaticResource myRadioButton}"  Background="#f0ad4e" IsChecked="True" />
+
+
+
 
 
 

@@ -168,195 +168,281 @@ namespace CustomControlsLibrary
            rect.Fill = colorPicker.lighter();
        }
 
-
-
-
-
-       private void RadioMouseEnter(object sender, RoutedEventArgs e)
+    //-------------------------------------------------------------------------EVENT FOR RADIOBUTTON---------------------------------------------------------------------------
+       private void RadioButtonDown(object sender, RoutedEventArgs e)
        {
-           Console.WriteLine("RadioButton Mouse Enter/GotFocused");
-           RadioButton radioButton = sender as RadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           radioButton.Background = colorPicker.dark();
-       }
-
-
-
-
-
-       private void RadioMouseLeave(object sender, RoutedEventArgs e)
-       {
-           Console.WriteLine("RadioButton Mouse Leave/FocusLost");
-           RadioButton radioButton = sender as RadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           radioButton.Background = colorPicker.light();
-       }
-
-       //Event for RadioLeftButtonDownEnable..
-       private void RadioMouseDownEnable(object sender, RoutedEventArgs e)
-       {
-           Console.WriteLine("RadioButton MouseDown Enable");
-           CustomRadioButton radioButton = sender as CustomRadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           //Storing previous value of RadioButton value...
-           radioButton.EnableColor = radioColor;
-           radioButton.Background = colorPicker.darker();
-       }
-
-
-
-       //Event for RadioLeftButtonUpEnable..
-       private void RadioMouseUpEnable(object sender, RoutedEventArgs e)
-       {
-           Console.WriteLine("RadioButton MouseUp Enable");
-           CustomRadioButton radioButton = sender as CustomRadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           radioButton.Background = colorPicker.lighter();
-           Console.WriteLine(radioButton.Disabled);
-           if (radioButton.Disabled == true)
+           //Checking the IsChecked property....
+           CustomPanel stackPanel = sender as CustomPanel;
+           Border radioButtonEnable = stackPanel.FindName("EnableButton") as Border;
+           Border radioButtonDisable = stackPanel.FindName("DisableButton") as Border;
+           Border radioButton;
+           Boolean EnabledFlag = true ;
+           try
            {
-               Console.WriteLine("Radio button mouseup is writing new values");
-               Console.WriteLine(radioButton.Background);
-               radioButton.Background = radioButton.InitialValue;
-               //radioButton.Background = radioButton.EnableColor;
-               radioButton.DisableColor = new SolidColorBrush(Color.FromRgb(215, 215, 219));
-               Console.WriteLine(radioButton.Background);
-               radioButton.Disabled = false;
-               Console.WriteLine(radioButton.Disabled);
+               ContentPresenter myContent = e.Source as ContentPresenter;
+               Console.WriteLine(myContent.Content);
+               if ((String)myContent.Tag == "Disable")
+               {
+                   EnabledFlag = false;
+               }
+               else 
+               {
+                   EnabledFlag = true;
+               }
            }
-       }
-
-   
-       //Event for RadioLeftButtonDisable..
-       private void RadioMouseDownDisable(object sender, RoutedEventArgs e)
-       {
-           Console.WriteLine("RadioButton MouseDown Disable");
-           RadioButton radioButton = sender as RadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           radioButton.Background = colorPicker.darker();
-       }
-
-
-       //Event for RadioLeftButtonDisable..
-       private void RadioMouseUpDisable(object sender, RoutedEventArgs e)
-       {
-           Console.WriteLine("RadioButton MouseDown Disable");
-           CustomRadioButton radioButton = sender as CustomRadioButton;
-           Brush radioColor = radioButton.Background;
-           Colorpicker colorPicker = new Colorpicker(radioColor);
-           radioButton.Background = colorPicker.lighter();
-           Console.WriteLine(radioButton.Disabled);
-           if (radioButton.Disabled == false)
+           catch (Exception)
            {
-               //Converting back to Primary color
-               radioButton.Disabled = true;
-               Console.WriteLine("Disabled Background Color\n");
-               Console.WriteLine(radioButton.EnableColor);
-               //radioButton.Background = new SolidColorBrush(Color.FromRgb(66,139,202)) ;
-               radioButton.Background = radioButton.EnableColor;
-               Console.WriteLine(radioButton.EnableColor);
-               //Now changing the DisableButton Color new SolidColorBrush(Color.FromRgb(239, 239, 240))
-               radioButton.EnableColor = new SolidColorBrush(Color.FromRgb(215,215,219));
-               radioButton.Disabled = true;
-               Console.WriteLine(radioButton.Disabled);
-
+               Border myBorder = e.Source as Border;
+               if ( (String)myBorder.Tag == "Disable")
+               {
+                   EnabledFlag = false;
+               }
+               else
+               {
+                   EnabledFlag = true;
+               }
+               
+           }
+           if (EnabledFlag)
+           {
+               radioButton = radioButtonEnable;
+               Colorpicker colorPicker = new Colorpicker(radioButton.Background);
+               radioButton.Background = colorPicker.darker();
               
            }
+           else
+           {
+               radioButton = radioButtonDisable;
+               Colorpicker colorPicker = new Colorpicker(radioButton.Background);
+               radioButton.Background = colorPicker.darker();
+   
+           }
+      
+           //Now changing the button color to Dark..
+           
            
        }
 
 
-    }//Partial class Dictionary1 Ends here..   
-
-
-   //-----------------------------------------Events for RadioButton Start Here-----------------------------------------
-   class CustomRadioButton : RadioButton
-   {
-       
-       //private  Boolean _disable = false;
-       public static  DependencyProperty InitialValueProperty = DependencyProperty.Register("InitialValue",typeof(Brush),typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
-       public static  DependencyProperty DisabledProperty = DependencyProperty.Register("Disabled", typeof(Boolean), typeof(CustomRadioButton), new PropertyMetadata(default(Boolean)));
-       public static  DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
-       public static  DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(CustomRadioButton), new PropertyMetadata(default(Brush)) );
-       public static  DependencyProperty RadioTypeProperty = DependencyProperty.Register("RadioType", typeof(String), typeof(CustomRadioButton), new FrameworkPropertyMetadata(default(String)) );
-     
-       public CustomRadioButton() : base()
+       private void RadioButtonOnLoad(object sender,RoutedEventArgs e)
        {
-          //Just call the base class constructor
+         
+       }
+   
+
+       private void RadioButtonUp(object sender, RoutedEventArgs e)
+       {
+           
+       }
+
+       private void RadioButtonEnter(object sender, RoutedEventArgs e)
+       {
        }
 
 
-       public Brush InitialValue
+       private void RadioButtonLeave(object sender, RoutedEventArgs e)
        {
-           get
-           {
-               return (Brush)GetValue(InitialValueProperty);
-           }
-           set
-           {
-               SetValue(InitialValueProperty,value);
-           }
        }
 
-       public Brush EnableColor
+       //Creating a loaded event
+       private void radioButtonLoaded(object sender, RoutedEventArgs e)
        {
-           get
-           { return (Brush)GetValue(EnableColorProperty); }
-
-           set
-           { 
-               SetValue(EnableColorProperty,value);
-           }
-
-       }
-
-       public Boolean Disabled
-       {
-           get
-           { return (Boolean)GetValue(DisabledProperty); }
-
-           set
-           {
-               SetValue(DisabledProperty, value);
-           }
-       }
-
-       public String RadioType
-       {
-           get
-           { return (String)GetValue(RadioTypeProperty); }
-
-           set
-           {
-               SetValue(RadioTypeProperty, value);
-           }
-
-       }
-
-
-
-      public Brush DisableColor
-       {
-           get
-           { return (Brush)GetValue(DisableColorProperty); }
-
-           set
-           { 
-               SetValue(DisableColorProperty,value);
-           }
-
+           Console.WriteLine("I am loaded");
+           CustomPanel myPanel = sender as CustomPanel;
+           //myPanel.IsChecked = true;
+           Console.WriteLine(myPanel.Check);
+          
+           
        }
 
 
 
       
+
+    }//Partial class Dictionary1 Ends here..   
+
+   class SwitchButton : RadioButton
+   {
+       public static DependencyProperty CheckedProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(SwitchButton), new FrameworkPropertyMetadata(true,new PropertyChangedCallback(OnCheckedChanged)));
+       public static DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty InitialEnabledValueProperty = DependencyProperty.Register("InitialEnabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty InitialDisabledValueProperty = DependencyProperty.Register("InitialDisabledValue", typeof(Brush), typeof(SwitchButton), new PropertyMetadata(default(Brush)));
+      
+
+         public SwitchButton() : base()
+       {
+          //Just call the base class constructor
+       }
+       
+       public Boolean Check
+       {
+           get
+           { return (Boolean)GetValue(CheckedProperty); }
+
+           set
+           {
+               SetValue(CheckedProperty, value);
+           }
+       }
+
+       public static void OnCheckedChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+       {
+           //Checking the IsChecked property....
+
+           Console.WriteLine("hey i am in chedked");
+
+           SwitchButton switchButton = sender as SwitchButton;
+           Console.WriteLine("HEy i am getting inside Ischecked  and the value is " + stackPanel.Check);
+           if (switchButton.Check)
+           {
+
+               switchButton.EnableColor = switchButton.InitialEnabledValue;
+               switchButton.DisableColor = switchButton.InitialDisabledValue;
+
+           }
+           if (switchButton.Check == false)
+           {
+               Console.WriteLine("HEy i am getting inside Ischecked false");
+               switchButton.EnableColor = switchButton.InitialDisabledValue;
+               switchButton.DisableColor = switchButton.InitialEnabledValue;
+
+           }
+       }
+
+
    }
-   //CustomRadioButton Class ends here...
+
+
+   class CustomPanel : StackPanel
+   {
+       public static DependencyProperty IsCheckedProperty = DependencyProperty.Register("Check", typeof(Boolean), typeof(CustomPanel),new FrameworkPropertyMetadata(new PropertyChangedCallback(OnCheckedChanged))  );
+       public static DependencyProperty DisabledProperty = DependencyProperty.Register("Disabled", typeof(Boolean), typeof(CustomPanel), new PropertyMetadata(default(Boolean)));
+       public static DependencyProperty DisableColorProperty = DependencyProperty.Register("DisableColor", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty EnableColorProperty = DependencyProperty.Register("EnableColor", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty InitialEnabledValueProperty = DependencyProperty.Register("InitialEnabledValue", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
+       public static DependencyProperty InitialDisabledValueProperty = DependencyProperty.Register("InitialDisabledValue", typeof(Brush), typeof(CustomPanel), new PropertyMetadata(default(Brush)));
+      
+       
+       
+       public CustomPanel() : base()
+       {
+          //Just call the base class constructor
+       }
+
+       public static void OnCheckedChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+       {
+           //Checking the IsChecked property....
+
+           Console.WriteLine("hey i am in chedked");
+          
+           CustomPanel stackPanel = sender as CustomPanel;
+           Console.WriteLine("HEy i am getting inside Ischecked  and the value is " + stackPanel.Check);
+           if (stackPanel.Check)
+           {
+
+               stackPanel.EnableColor = stackPanel.InitialEnabledValue;
+               stackPanel.DisableColor = stackPanel.InitialDisabledValue;
+
+           }
+           if (stackPanel.Check == false)
+           {
+               Console.WriteLine("HEy i am getting inside Ischecked false");
+               stackPanel.EnableColor = stackPanel.InitialDisabledValue;
+               stackPanel.DisableColor = stackPanel.InitialEnabledValue;
+
+           }
+
+           
+       }
+
+       public Boolean Check
+       {
+           get
+           { return (Boolean)GetValue(IsCheckedProperty); }
+
+           set
+           {
+               SetValue(IsCheckedProperty, value);
+           }
+       }
+
+
+       
+       public Brush DisableColor
+       {
+           get
+           {
+               return (Brush)GetValue(DisableColorProperty);
+           }
+           set
+           {
+               SetValue(DisableColorProperty, value);
+           }
+
+       }
+
+       public Brush InitialEnabledValue
+       {
+           get
+           {
+               return (Brush)GetValue(InitialEnabledValueProperty);
+           }
+           set
+           {
+               SetValue(InitialEnabledValueProperty, value);
+           }
+
+       }
+
+
+
+
+       public Brush InitialDisabledValue
+       {
+           get
+           {
+               return (Brush)GetValue(InitialDisabledValueProperty);
+           }
+           set
+           {
+               SetValue(InitialDisabledValueProperty, value);
+           }
+
+       }
+
+       public Brush EnableColor
+       {
+           get
+           {
+               return (Brush)GetValue(EnableColorProperty);
+           }
+           set
+           {
+               SetValue(EnableColorProperty, value);
+           }
+
+       }
+
+
+       public Boolean Disabled
+       {
+           get
+           {
+               return (Boolean)GetValue(DisabledProperty);
+           }
+           set
+           {
+               SetValue(DisabledProperty, value);
+           }
+
+       }
+
+   }
+
+
+   
+
 
 
 

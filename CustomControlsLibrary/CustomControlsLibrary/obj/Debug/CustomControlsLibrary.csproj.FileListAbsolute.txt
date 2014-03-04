@@ -15,4 +15,4 @@ c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\Cust
 c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.exe
 c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.pdb
 C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary_MarkupCompile.lref
-C:\Users\Robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\GeneratedInternalTypeHelper.g.cs
