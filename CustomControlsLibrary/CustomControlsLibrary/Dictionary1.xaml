@@ -1,30 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CustomControlsLibrary"
-                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     x:Class="CustomControlsLibrary.Dictionary1">
-    
-   
 
-                                     <!--Style for ButtonStyle ends here-->
-                                     <!--Control Template for button start here-->
-    
+
+
+    <!--Style for ButtonStyle ends here-->
+    <!--Control Template for button start here-->
+
     <Style TargetType="Button" x:Key="buttonStyle">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Width="{TemplateBinding Width}" Height="35">
-                         <Border   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"  Background="{TemplateBinding Background}" CornerRadius="3"   x:Name="myButton">
-                            <ContentPresenter  HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                        <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" CornerRadius="3" x:Name="myButton">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" >
                                 <TextBlock.Foreground>
-                                     White
+                                    White
                                 </TextBlock.Foreground>
                                 <TextBlock.FontSize>13</TextBlock.FontSize>
-                           
-                             </ContentPresenter>
+
+                            </ContentPresenter>
                         </Border>
-                     </Grid>
-                 </ControlTemplate>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
         <EventSetter Event="Button.PreviewMouseLeftButtonDown" Handler="ButtonDown" />
@@ -33,11 +33,11 @@
         <EventSetter Event="Button.MouseLeave" Handler="ButtonLeave"/>
         <Setter Property="FontFamily" Value="Helvetica Neue" />
     </Style>
-    
+
     <Style BasedOn="{StaticResource buttonStyle}" TargetType="Button" x:Key="buttonPrimary">
         <Setter Property="Background" Value="#428bca" />
     </Style>
-    
+
     <Style BasedOn="{StaticResource buttonStyle}" TargetType="Button" x:Key="buttonInfo">
         <Setter Property="Background" Value="#5bc0de" />
     </Style>
@@ -52,32 +52,32 @@
 
     <Style BasedOn="{StaticResource buttonStyle}" TargetType="Button">
         <Setter Property="Background" Value="Black" />
-    </Style> 
+    </Style>
 
     <Style BasedOn="{StaticResource buttonStyle}" TargetType="Button" x:Key="buttonDanger">
         <Setter Property="Background" Value="#d9534f" />
     </Style>
-                                    <!--Region for button ends here-->
+    <!--Region for button ends here-->
 
 
 
     <!--MenuBar Control Template-->
-    <Style  TargetType="MenuItem" >
+    <Style TargetType="MenuItem" >
         <EventSetter Event="MenuItem.PreviewMouseLeftButtonDown" Handler="MenuMouseDown" />
         <EventSetter Event="MenuItem.PreviewMouseLeftButtonUp" Handler="MenuMouseUp" />
         <EventSetter Event="MenuItem.MouseEnter" Handler="MenuMouseEnter" />
         <EventSetter Event="MenuItem.MouseLeave" Handler="MenuMouseLeave"/>
         <EventSetter Event="MenuItem.GotKeyboardFocus" Handler="MenuItemHighlighted" />
         <EventSetter Event="LostKeyboardFocus" Handler="FocusLost" />
-      
+
         <Setter Property="FontFamily" Value="Helvetica Neue" />
         <Setter Property="Template" >
             <Setter.Value>
-                <ControlTemplate  TargetType="MenuItem">
+                <ControlTemplate TargetType="MenuItem">
                     <Grid SnapsToDevicePixels="True">
                         <Rectangle x:Name="OuterBorder" RadiusY="1" RadiusX="1"/>
-                        <Rectangle x:Name="Bg" Fill="{Binding Path=Background, RelativeSource={RelativeSource  AncestorType=Menu}}" MouseLeftButtonDown="ItemMouseDown" MouseLeftButtonUp="ItemMouseUp" MouseEnter="MouseEnterItem" MouseLeave="MouseLeaveItem"   Margin="1"   RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
-                        <Rectangle x:Name="InnerBorder" Margin="2"  />
+                        <Rectangle x:Name="Bg" Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" MouseLeftButtonDown="ItemMouseDown" MouseLeftButtonUp="ItemMouseUp" MouseEnter="MouseEnterItem" MouseLeave="MouseLeaveItem" Margin="1" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
+                        <Rectangle x:Name="InnerBorder" Margin="2" />
                         <DockPanel>
                             <ContentPresenter x:Name="Icon" Content="{TemplateBinding Icon}" ContentSource="Icon" Margin="4,0,6,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                             <Path x:Name="GlyphPanel" Data="M0,5.1L1.7,5.2 3.4,7.1 8,0.4 9.2,0 3.3,10.8z" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center"/>
@@ -86,41 +86,41 @@
                                 <TextBlock.LineHeight>1.42</TextBlock.LineHeight>
                             </ContentPresenter>
                         </DockPanel>
-                        <Popup  x:Name="PART_Popup"  AllowsTransparency="True"   Focusable="False" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"  Placement="Bottom" VerticalOffset="-1">
+                        <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
                             <Themes:SystemDropShadowChrome x:Name="Shdw" Color="Gray">
-                                <Border x:Name="SubMenuBorder"   Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.8">
-                                    <ScrollViewer x:Name="SubMenuScrollViewer"  Margin="1,0" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                <Border x:Name="SubMenuBorder" Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.8">
+                                    <ScrollViewer x:Name="SubMenuScrollViewer" Margin="1,0" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="0">
                                                 <!--Submenu item content rectangle box. changing its opactiy to 0.6-->
-                                                <Rectangle x:Name="OpaqueRect" Fill= "{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9"  Height="{Binding ActualHeight, ElementName=SubMenuBorder}" Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
+                                                <Rectangle x:Name="OpaqueRect" Fill= "{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" Height="{Binding ActualHeight, ElementName=SubMenuBorder}" Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
                                             </Canvas>
                                             <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
                                             <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="29,2,0,8" Width="1"/>
                                             <Rectangle Fill="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Menu}}" Opacity="0.9" HorizontalAlignment="Left" Margin="30,2,0,8" Width="1"/>
-                                            <ItemsPresenter x:Name="ItemsPresenter"  KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="True" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="True" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
                                         </Grid>
                                     </ScrollViewer>
                                 </Border>
                             </Themes:SystemDropShadowChrome>
                         </Popup>
                     </Grid>
-                    
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSuspendingPopupAnimation" Value="True">
-                                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
-                            </Trigger>
-                            <Trigger Property="Icon" Value="{x:Null}">
-                                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
-                                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
-                                <Setter Property="Margin" TargetName="Shdw" Value="0,0,3,3"/>
-                                <Setter Property="Color" TargetName="Shdw" Value="#30000000"/>
-                            </Trigger>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                            <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+                        </Trigger>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
+                            <Setter Property="Margin" TargetName="Shdw" Value="0,0,3,3"/>
+                            <Setter Property="Color" TargetName="Shdw" Value="#30000000"/>
+                        </Trigger>
 
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter Property="Stroke" TargetName="Bg" Value="#20717070"/>
@@ -137,34 +137,34 @@
 
 
                         <Trigger Property="IsSubmenuOpen" Value="True">
-                                <Setter Property="Stroke" TargetName="Bg" Value="Transparent"/>
-                                <Setter Property="Fill" TargetName="Bg">
-                                    <Setter.Value>
-                                        <LinearGradientBrush  EndPoint="1,1" StartPoint="0,0">
+                            <Setter Property="Stroke" TargetName="Bg" Value="Transparent"/>
+                            <Setter Property="Fill" TargetName="Bg">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                         <GradientStop Color="#28c1bfbf" Offset="0"/>
                                         <GradientStop Color="#28c1bfbf" Offset="0.75"/>
                                         <GradientStop Color="#28c1bfbf" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="#50d1d1d7"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="#FF9A9A9A"/>
-                                <Setter Property="Fill" TargetName="GlyphPanel" Value="#FF848589"/>
-                            </Trigger>
-                            <Trigger Property="CanContentScroll" SourceName="SubMenuScrollViewer" Value="False">
-                                <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
-                                <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#FF9A9A9A"/>
+                            <Setter Property="Fill" TargetName="GlyphPanel" Value="#FF848589"/>
+                        </Trigger>
+                        <Trigger Property="CanContentScroll" SourceName="SubMenuScrollViewer" Value="False">
+                            <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
+                            <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
-                            
+
 
             </Setter.Value>
-        </Setter> 
+        </Setter>
     </Style>
-    
+
     <Style TargetType="Menu" >
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#080707"/>
@@ -172,10 +172,10 @@
     <Style TargetType="Popup">
         <Setter Property="Margin" Value="0,15,0,0"/>
         <Setter Property="Width" Value="170"/>
-       
+
     </Style>
-   
-   
+
+
     <Style TargetType="Menu" x:Key="MenuPrimary">
         <!--Menu style for basic menu-->
         <Setter Property="Background" Value="#428bca" />
@@ -186,7 +186,7 @@
         <!--Menu style for basic menu-->
         <Setter Property="Background" Value="#5bc0de" />
     </Style>
-    
+
     <Style TargetType="Menu" x:Key="MenuSuccess" >
         <!--Menu style for basic menu-->
         <Setter Property="Background" Value=" #5cb85c" />
@@ -204,21 +204,34 @@
         <Setter Property="Background" Value="#d9534f" />
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    
-    
-                                        <!--Style for MenuBar region Ends here-->
 
-   
-                                         <!---NEW STYLE FOR RADIO BUTTON-->
+
+    <!--Style for MenuBar region Ends here-->
+
+
+    <!---NEW STYLE FOR RADIO BUTTON-->
     <Style TargetType="local:SwitchButton" x:Key="mybutton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SwitchButton">
-                    <local:CustomPanel x:Name="customPanel"  Orientation="Horizontal" DisableColor="#cacad1" InitialDisabledValue="#cacad1"  InitialEnabledValue="{TemplateBinding Background}"  EnableColor="{TemplateBinding Background}" Check="{Binding Path=Check,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Loaded="radioButtonLoaded" Style="{DynamicResource mystyle}"   >
-                        <Border x:Name="EnableButton"   HorizontalAlignment="Left" Tag="Enable"  Background="{Binding Path=EnableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}" Width="60" Height="30" CornerRadius="6,0,0,6" >
+                    <local:CustomPanel x:Name="customPanel"
+                                       Orientation="Horizontal"
+                                       DisableColor="{Binding Path=DisableColor, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                                       InitialDisabledValue="#cacad1"
+                                       InitialEnabledValue="{TemplateBinding Background}"
+                                       EnableColor="{Binding Path=EnableColor, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                                       Check="{TemplateBinding Check}"
+                                       Loaded="radioButtonLoaded" 
+                                       Style="{DynamicResource mystyle}"
+                                       >
+                        <Border x:Name="EnableButton" HorizontalAlignment="Left" Tag="Enable"
+                                Background="{Binding Path=EnableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
+                                CornerRadius="6,0,0,6" Width="60" Height="30" >
                             <ContentPresenter HorizontalAlignment="Center" Tag="Enable" VerticalAlignment="Center" Content="Enable" />
                         </Border>
-                        <Border x:Name="DisableButton"   Background="{Binding Path=DisableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}" Tag="Disable" HorizontalAlignment="Right" Width="60" Height="30" CornerRadius="0,6,6,0" >
+                        <Border x:Name="DisableButton"  Tag="Disable"  HorizontalAlignment="Right"
+                                Background="{Binding Path=DisableColor,RelativeSource={RelativeSource AncestorType=local:CustomPanel},Mode=TwoWay}"
+                                CornerRadius="0,6,6,0" Width="60" Height="30" >
                             <ContentPresenter HorizontalAlignment="Center" Tag="Disable" VerticalAlignment="Center" Content="Disable" />
                         </Border>
                     </local:CustomPanel>
@@ -232,19 +245,18 @@
                     </ControlTemplate.Resources>
                 </ControlTemplate>
             </Setter.Value>
-            
+
         </Setter>
         <Setter Property="TextBlock.Foreground" Value="White"/>
         <Setter Property="TextBlock.FontSize" Value="14"/>
         <Setter Property="TextBlock.FontWeight" Value="SemiBold" />
         <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
-        <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
+        <Setter Property="EnableColor" Value="{TemplateBinding Background}" />
+        <Setter Property="DisableColor" Value="#cacad1" />
         <!--Setting the default value for switchButton-->
         <Setter Property="Check" Value="False" />
-        <Setter Property="DisableColor" Value="#cacad1" />
-        <Setter Property="EnableColor" Value="{TemplateBinding Background}" />
-        <Setter Property="InitialEnabledValue" Value="{TemplateBinding Background}" />
-        <Setter Property="InitialDisabledValue" Value="#cacad1" />
+
+        <EventSetter Event="Loaded" Handler="RadioButtonOnLoad" />
     </Style>
-      
+
 </ResourceDictionary>
