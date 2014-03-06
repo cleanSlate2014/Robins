@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Markup;
+using System.Windows.Controls.Primitives;
 using System.IO;
 using System.Xml;
 
@@ -653,44 +654,50 @@ namespace CustomControlsLibrary
             this.WindowStyle = WindowStyle.None;
             this.AllowsTransparency = true;
             this.Background = new SolidColorBrush(Color.FromArgb(255,0,0,0));
-            this.Background.Opacity = 0.8;
+            this.Background.Opacity = 0.7;
             
         }
     }
 
 
 
-    class ModalWindow : Grid
+    class Modal : Grid
     {
         Panel ChildObj;
+        ButtonBase ModalClickButton;
+        Border border;
 
-        public ModalWindow()
+        public Modal()
         {
-            this.Loaded += ModalWindow_Loaded;
+            this.Loaded += Modal_Loaded;
         }
 
-        private void ModalWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Modal_Loaded( object sender, RoutedEventArgs e)
         {
             Grid ModalPanel = sender as Grid;
             Grid Panel = sender as Grid;
+            border =  new Border();
+            border.CornerRadius = new CornerRadius(10);
+            border.Width = 650;
+            border.Height = 600;
+            border.Background = Brushes.White;
             Console.WriteLine(VisualTreeHelper.GetChildrenCount(ModalPanel));
             Grid parentObj = VisualTreeHelper.GetParent(ModalPanel) as Grid;
             //parentObj.Children.Remove(ModalPanel);
-            ChildObj = ModalPanel.Children[0] as Panel;
+            ChildObj = ModalPanel.Children[1] as Panel;
+            //Creating the button object..
+            ModalClickButton = ModalPanel.Children[0] as ButtonBase;
+            //Now attaching a click event on modal..
+            ModalClickButton.Click +=ModalClickButton_Click;
             //Adding all child to grid.....
-            parentObj.Children.Remove(ModalPanel);
+            //parentObj.Children.Remove(ModalPanel);
             ModalPanel.Children.Remove(ChildObj);
             ChildObj.HorizontalAlignment = HorizontalAlignment.Center;
             ChildObj.VerticalAlignment = VerticalAlignment.Center;
             ChildObj.Background = Brushes.White;
-            ChildObj.Width = 650;
-            ChildObj.Height = 600;
             ChildObj.Name = "MyPanel";
-            Window myWindow = new MyWindow();
-            myWindow.Content = ChildObj;
-            myWindow.MouseLeftButtonDown += myWindow_MouseLeftButtonDown;
-            myWindow.ShowDialog();
-
+            border.Child = ChildObj;
+           
         }
 
         private void myWindow_MouseLeftButtonDown(object sender, RoutedEventArgs e)
@@ -701,6 +708,20 @@ namespace CustomControlsLibrary
             {
                 myWindow.Close();
             }
+        }
+
+        private void ModalClickButton_Click(object sender, RoutedEventArgs e)
+        {
+            //ButtonBase for showing modal..
+            ModalShow();
+        }
+
+        private void ModalShow()
+        {
+            Window myWindow = new MyWindow();
+            myWindow.Content = border;
+            myWindow.MouseLeftButtonDown += myWindow_MouseLeftButtonDown;
+            myWindow.ShowDialog();
         }
 
     }
