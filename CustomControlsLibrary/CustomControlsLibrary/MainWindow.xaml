@@ -5,13 +5,8 @@
         
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-
-
         <Canvas>
-
             <Menu Width="1390" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0" VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
-
-
                 <MenuItem Header="_EDIT" >
                     <MenuItem Header="_Copy"></MenuItem>
                 </MenuItem>
@@ -24,11 +19,6 @@
                 </MenuItem>
 
             </Menu>
-            
-
-
-
-
         </Canvas>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Margin="-51,74,-142,0"  >
             <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
@@ -64,14 +54,40 @@
             <CheckBox Content="CheckBox"  Margin="0,0,0,5" Style="{StaticResource CheckWarning}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
             <CheckBox Content="CheckBox"  Margin="0,0,0,5"   IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
         </StackPanel>
-
-
-
-
-
-
-
-
-
+        
+       <!-- <Popup  StaysOpen="True" Name="dialogPopUp"  Placement="Center" PopupAnimation="Slide" AllowsTransparency="True" Opacity="0.6"  >
+            <Border>
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#ffffff" Offset="1"></GradientStop>
+                        <GradientStop Color="#eeeeee" Offset="0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="5" Background="White">
+                    <TextBlock Margin="10" TextWrapping="Wrap">
+                        Please Enter Yout Name..
+                    </TextBlock>
+                    <TextBlock Name="txtName" Margin="10" ></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Click="dialogCmdOkClick"  Width="60" Height="30" Margin="0,0,5,0">Ok</Button>
+                        <Button Click="Button_Click_1" Padding="3" Height="30" Width="60" >Cancel</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Button Click="Button_Click_2" Height="30" Width="90">Open Dialog</Button>-->
+        <libs:ModalWindow >
+            <Grid HorizontalAlignment="Center" >
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical" Margin="-51,74,-142,0"  >
+                    <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
+                    <Button Content="ButtonPrimary" Width="110" Style="{StaticResource buttonPrimary}" Margin="10,0,0,10" />
+                    <Button Content="ButtonInfo" Width="110" Style="{StaticResource buttonInfo}" Margin="10,0,0,10" />
+                    <Button Content="ButtonDanger" Width="110" Style="{StaticResource buttonDanger}" Margin="10,0,0,10" />
+                    <Button Content="ButtonWarning" Width="110" Style="{StaticResource buttonWarning}" Margin="10,0,0,10" />
+                    <Button Content="Button" Width="110"  Margin="10,0,0,10" />
+                </StackPanel>
+            </Grid>
+        </libs:ModalWindow>
     </Grid>
+    
 </Window>

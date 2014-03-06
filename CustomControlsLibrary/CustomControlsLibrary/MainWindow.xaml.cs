@@ -23,6 +23,44 @@ namespace CustomControlsLibrary
         public MainWindow()
         {
             InitializeComponent();  
+            
+            
+
+            
         }
+
+       
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DisableMainPage();
+        }
+
+        private void DisableMainPage()
+        {
+            this.IsEnabled = false;
+            this.Background = new SolidColorBrush(Color.FromRgb(219,219,224));
+            this.Opacity = 0.7;
+           
+            //dialogPopUp.IsOpen = true;
+            
+        }
+
+
+        
+        private  void dialogCmdOkClick(object sender, RoutedEventArgs e)
+        {
+           // DisableMainPage();
+        }
+
+     
     }
+
+
+  
 }

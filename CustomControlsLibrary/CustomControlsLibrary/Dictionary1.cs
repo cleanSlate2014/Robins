@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Markup;
+using System.IO;
+using System.Xml;
 
 
 
@@ -132,20 +135,12 @@ namespace CustomControlsLibrary
 
         private void MouseEnterItem(object sender, RoutedEventArgs e)
         {
-            /* Console.WriteLine("MouseEnterItem");
-  Rectangle rect = sender as Rectangle;
-  Brush itemColor = rect.Fill;
-  Colorpicker colorPicker = new Colorpicker(itemColor);
-  rect.Fill = colorPicker.dark(); */
+     
         }
 
         private void MouseLeaveItem(object sender, RoutedEventArgs e)
         {
-            /* Console.WriteLine("MenuItem MouseLeave");
-  Rectangle rect = sender as Rectangle;
-  Brush itemColor = rect.Fill;
-  Colorpicker colorPicker = new Colorpicker(itemColor);
-  rect.Fill = colorPicker.light(); */
+        
         }
 
 
@@ -167,6 +162,8 @@ namespace CustomControlsLibrary
             Colorpicker colorPicker = new Colorpicker(itemColor);
             rect.Fill = colorPicker.lighter();
         }
+
+      
 
         //-------------------------------------------------------------------------EVENT FOR RADIOBUTTON---------------------------------------------------------------------------
         private void RadioButtonDown(object sender, RoutedEventArgs e)
@@ -294,25 +291,12 @@ namespace CustomControlsLibrary
                     stackPanel.PrevCheck = false;
                    
                 }
-              /*  if (EnabledFlag == false)
-                {
-                    Console.WriteLine("I am inside disabled flag background");
-                    Colorpicker colorPicker = new Colorpicker(radioButtonEnable.Background);
-                    radioButtonDisable.Background = colorPicker.dark() ;
-                    radioButtonEnable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
-
-                }*/
+         
             }
             
             if (stackPanel.PrevCheck == false)
             {
-               /* if (EnabledFlag)
-                {
-                    Console.WriteLine("I am inside enabled flag background");
-                    Colorpicker colorPicker = new Colorpicker(radioButtonDisable.Background);
-                    radioButtonEnable.Background = colorPicker.dark(); 
-                    radioButtonDisable.Background = new SolidColorBrush(Color.FromRgb(219, 219, 224));
-                }*/
+           
                 
                 if (EnabledFlag == false)
                 {
@@ -377,6 +361,7 @@ namespace CustomControlsLibrary
             
             Colorpicker colorPicker = new Colorpicker(checkBox.Background);
             checkBox.Background = colorPicker.light();
+            
         }
 
         private void CheckBoxMouseDown(object sender, RoutedEventArgs e)
@@ -395,6 +380,8 @@ namespace CustomControlsLibrary
             Colorpicker colorPicker = new Colorpicker(checkBox.Background);
             checkBox.Background = colorPicker.lighter();
         }
+
+      
 
     }//Partial class Dictionary1 Ends here..
 
@@ -656,6 +643,67 @@ namespace CustomControlsLibrary
     }
 
 
+
+
+    class MyWindow : Window
+    {
+        public MyWindow()
+        {
+            this.WindowState = WindowState.Maximized;
+            this.WindowStyle = WindowStyle.None;
+            this.AllowsTransparency = true;
+            this.Background = new SolidColorBrush(Color.FromArgb(255,0,0,0));
+            this.Background.Opacity = 0.8;
+            
+        }
+    }
+
+
+
+    class ModalWindow : Grid
+    {
+        Panel ChildObj;
+
+        public ModalWindow()
+        {
+            this.Loaded += ModalWindow_Loaded;
+        }
+
+        private void ModalWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Grid ModalPanel = sender as Grid;
+            Grid Panel = sender as Grid;
+            Console.WriteLine(VisualTreeHelper.GetChildrenCount(ModalPanel));
+            Grid parentObj = VisualTreeHelper.GetParent(ModalPanel) as Grid;
+            //parentObj.Children.Remove(ModalPanel);
+            ChildObj = ModalPanel.Children[0] as Panel;
+            //Adding all child to grid.....
+            parentObj.Children.Remove(ModalPanel);
+            ModalPanel.Children.Remove(ChildObj);
+            ChildObj.HorizontalAlignment = HorizontalAlignment.Center;
+            ChildObj.VerticalAlignment = VerticalAlignment.Center;
+            ChildObj.Background = Brushes.White;
+            ChildObj.Width = 650;
+            ChildObj.Height = 600;
+            ChildObj.Name = "MyPanel";
+            Window myWindow = new MyWindow();
+            myWindow.Content = ChildObj;
+            myWindow.MouseLeftButtonDown += myWindow_MouseLeftButtonDown;
+            myWindow.ShowDialog();
+
+        }
+
+        private void myWindow_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        {
+            Window myWindow = sender as Window;
+            Panel MyPanel = myWindow.FindName("MyPanel") as Panel;
+            if (ChildObj.IsMouseOver == false)
+            {
+                myWindow.Close();
+            }
+        }
+
+    }
 
 
 
