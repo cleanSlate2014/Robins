@@ -1,0 +1,7 @@
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\bin\Debug\SimpleMvvm-Wpf.exe.config
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\MyMVVM.csprojResolveAssemblyReference.cache
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\MainWindow.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\App.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\SimpleMvvm-Wpf_MarkupCompile.cache
+c:\users\robins\documents\visual studio 2012\Projects\MyMVVM\MyMVVM\obj\x86\Debug\SimpleMvvm-Wpf_MarkupCompile.lref

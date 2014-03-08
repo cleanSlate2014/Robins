@@ -1,0 +1,1 @@
+c:\users\robins\documents\visual studio 2012\Projects\SimpleMvvmWpf1\SimpleMvvmWpf1\bin\Debug\SimpleMvvm-Wpf.exe.config

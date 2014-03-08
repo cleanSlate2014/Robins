@@ -1,0 +1,1 @@
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\WpfApplication3.exe.config
