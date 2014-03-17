@@ -18,3 +18,10 @@ namespace Spreadsheet
     {
     }
 }
+
+
+
+class SpreadSheet : Control
+{
+
+}

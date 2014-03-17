@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:libs="clr-namespace:CustomControlsLibrary"
         
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="1000">
     <Grid>
         <Canvas>
             <Menu Width="1390" Canvas.Right="0" Canvas.Left="0" Canvas.Top="0" VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Black" >
@@ -29,16 +29,15 @@
             <Button Content="Button" Width="110"  Margin="10,0,0,10" />
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-75,39,-188,246" >
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="162,49,50,396" >
             <libs:SwitchButton Style="{StaticResource SwitchButtonSuccess}" Disabled="True"  Margin="10,0,0,10"></libs:SwitchButton>
             <libs:SwitchButton Style="{StaticResource SwitchButtonPrimary}" Disabled="False"  Margin="10,0,0,10" ></libs:SwitchButton>
             <libs:SwitchButton  Style="{StaticResource SwitchButtonInfo}" Margin="10,0,0,10"></libs:SwitchButton>
             <libs:SwitchButton  Style="{StaticResource SwitchButtonDanger}" Disabled="True" Margin="10,0,0,10" ></libs:SwitchButton>
             <libs:SwitchButton  Style="{StaticResource SwitchButtonWarning}" Margin="10,0,0,10" ></libs:SwitchButton>
             <libs:SwitchButton  Style="{StaticResource SwitchButtonBasic}" Margin="10,0,0,10" ></libs:SwitchButton>
-            
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Margin="371,400,127,0">
+        <StackPanel HorizontalAlignment="Center" Margin="736,390,238,10">
             <CheckBox  Style="{StaticResource CheckBoxSuccess}"  Canvas.Left="115" Canvas.Top="46"/>
             <CheckBox  Style="{StaticResource CheckBoxPrimary}"  Canvas.Left="135" Canvas.Top="46"/>
             <CheckBox  Style="{StaticResource CheckBoxInfo}"  Canvas.Left="155" Canvas.Top="46"/>
@@ -46,7 +45,7 @@
             <CheckBox  Style="{StaticResource CheckBoxWarning}"  Canvas.Left="195" Canvas.Top="46"/>
             <CheckBox  Style="{StaticResource CheckBoxBasic}"  Canvas.Left="215" Canvas.Top="46"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Margin="127,400,318,10">
+        <StackPanel HorizontalAlignment="Center" Margin="474,390,432,150" Width="86">
             <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckSuccess}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29" Height="17"/>
             <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckPrimary}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
             <CheckBox Content="CheckBox" Margin="0,0,0,5" Style="{StaticResource CheckInfo}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
@@ -54,8 +53,83 @@
             <CheckBox Content="CheckBox"  Margin="0,0,0,5" Style="{StaticResource CheckWarning}"  IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
             <CheckBox Content="CheckBox"  Margin="0,0,0,5"   IsChecked="True" Canvas.Left="147" Canvas.Top="29"/>
         </StackPanel>
+        <libs:Modal Margin="0,-37,0,37" >
+            <Button Background="#428bca" Width="200" Margin="431,303,361,321" >Click to Show Modal</Button>
+            <Grid HorizontalAlignment="Center">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical" Margin="-51,74,-142,0"  >
+                    <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
+                    <Button Content="ButtonPrimary" Width="110" Style="{StaticResource buttonPrimary}" Margin="10,0,0,10" />
+                    <Button Content="ButtonInfo" Width="110" Style="{StaticResource buttonInfo}" Margin="10,0,0,10" />
+                    <Button Content="ButtonDanger" Width="110" Style="{StaticResource buttonDanger}" Margin="10,0,0,10" />
+                    <Button Content="ButtonWarning" Width="110" Style="{StaticResource buttonWarning}" Margin="10,0,0,10" />
+                    <Button Content="Button" Width="110"  Margin="10,0,0,10" />
+                </StackPanel>
+
+
+            </Grid>
+
+        </libs:Modal>
+        <StackPanel Orientation="Vertical" Margin="10,74,882,468"  >
+            <RadioButton   HorizontalAlignment="Left" Margin="0,0,0,10"  VerticalAlignment="Top" />
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="0,0,0,10" Style="{StaticResource RadioButtonPrimary}"  VerticalAlignment="Top"/>
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="0,0,0,10"  Style="{StaticResource RadioButtonDanger}" VerticalAlignment="Top"/>
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="0,0,0,10"  Style="{StaticResource RadioButtonSuccess}"  VerticalAlignment="Top"/>
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="0,0,0,10"  Style="{StaticResource RadioButtonWarning}" VerticalAlignment="Top"/>
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="0,0,0,10"  Style="{StaticResource RadioButtonInfo}" VerticalAlignment="Top"/>
+        </StackPanel>
         
-       <!-- <Popup  StaysOpen="True" Name="dialogPopUp"  Placement="Center" PopupAnimation="Slide" AllowsTransparency="True" Opacity="0.6"  >
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  Margin="20,418,0,122"  >
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonBasic}" IsChecked="True"  Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonSuccess}"  Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonInfo}"  Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonWarning}" Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonDanger}" Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <RadioButton GroupName="stripe" Style="{StaticResource VerticalTabButtonPrimary}" Margin="0,0,0,10" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <StackPanel Height="40"  Orientation="Horizontal" Margin="0,320,639,320">
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Samsung"  IsChecked="True"   Style="{StaticResource TabRadioButtonBasic}" />
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Apple"     Style="{StaticResource TabRadioButtonPrimary}" />
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Nokia"     Style="{StaticResource TabRadioButtonInfo}" />
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Firefox"  Style="{StaticResource TabRadioButtonWarning}" />
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Firefox"  Style="{StaticResource TabRadioButtonSuccess}" />
+            <RadioButton  GroupName="phones" Margin="0,0,10,0" Content="Firefox"  Style="{StaticResource TabRadioButtonDanger}" />
+        </StackPanel>
+        <Grid Margin="-117,19,117,-19">
+        <libs:ButtonGroup Margin="264,385,452,253">
+            <RadioButton Style="{StaticResource RadioGroupDanger}"  />
+            <RadioButton Style="{StaticResource RadioGroupDanger}" IsChecked="True" />
+            <RadioButton Style="{StaticResource RadioGroupDanger}"  />
+        </libs:ButtonGroup>
+        <libs:ButtonGroup Margin="264,422,284,218">
+            <RadioButton Style="{StaticResource RadioGroupPrimary}"  />
+            <RadioButton Style="{StaticResource RadioGroupPrimary}" />
+            <RadioButton Style="{StaticResource RadioGroupPrimary}"  IsChecked="True"  />
+        </libs:ButtonGroup>
+        <libs:ButtonGroup Margin="264,457,284,183">
+            <RadioButton Style="{StaticResource RadioGroupSuccess}"  />
+            <RadioButton Style="{StaticResource RadioGroupSuccess}" IsChecked="True" />
+            <RadioButton Style="{StaticResource RadioGroupSuccess}"  />
+        </libs:ButtonGroup>
+        <libs:ButtonGroup Margin="264,492,284,148">
+            <RadioButton Style="{StaticResource RadioGroupInfo}"  />
+            <RadioButton Style="{StaticResource RadioGroupInfo}" />
+            <RadioButton Style="{StaticResource RadioGroupInfo}" IsChecked="True"   />
+        </libs:ButtonGroup>
+        <libs:ButtonGroup Margin="264,527,284,113">
+            <RadioButton Style="{StaticResource RadioGroupWarning}" IsChecked="True" />
+            <RadioButton Style="{StaticResource RadioGroupWarning}"  />
+            <RadioButton Style="{StaticResource RadioGroupWarning}"  />
+        </libs:ButtonGroup>
+       
+
+        </Grid>
+
+
+    </Grid>
+
+</Window>
+<!-- <Popup  StaysOpen="True" Name="dialogPopUp"  Placement="Center" PopupAnimation="Slide" AllowsTransparency="True" Opacity="0.6"  >
             <Border>
                 <Border.Background>
                     <LinearGradientBrush>
@@ -76,19 +150,3 @@
             </Border>
         </Popup>
         <Button Click="Button_Click_2" Height="30" Width="90">Open Dialog</Button>-->
-        <libs:Modal >
-            <Button Background="#428bca" Width="200" Margin="227,500,418,20" >Click to Show Modal</Button>
-            <Grid HorizontalAlignment="Center">
-                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical" Margin="-51,74,-142,0"  >
-                    <Button Content="ButtonSuccess" Width="110" Style="{StaticResource buttonSuccess}" Margin="0,0,0,10" />
-                    <Button Content="ButtonPrimary" Width="110" Style="{StaticResource buttonPrimary}" Margin="10,0,0,10" />
-                    <Button Content="ButtonInfo" Width="110" Style="{StaticResource buttonInfo}" Margin="10,0,0,10" />
-                    <Button Content="ButtonDanger" Width="110" Style="{StaticResource buttonDanger}" Margin="10,0,0,10" />
-                    <Button Content="ButtonWarning" Width="110" Style="{StaticResource buttonWarning}" Margin="10,0,0,10" />
-                    <Button Content="Button" Width="110"  Margin="10,0,0,10" />
-                </StackPanel>
-            </Grid>
-        </libs:Modal>
-    </Grid>
-    
-</Window>

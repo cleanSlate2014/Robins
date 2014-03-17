@@ -11,3 +11,10 @@ c:\users\robins\documents\visual studio 2012\Projects\Spreadsheet\Spreadsheet\ob
 c:\users\robins\documents\visual studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Spreadsheet.csproj.GenerateResource.Cache
 c:\users\robins\documents\visual studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Spreadsheet.exe
 c:\users\robins\documents\visual studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Spreadsheet.pdb
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\SpreadSheetDictionary1.baml
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\App.baml
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Dictionary1.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\SpreadSheetDictionary1.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Spreadsheet_MarkupCompile.lref
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\Spreadsheet\Spreadsheet\obj\Debug\Dictionary1.baml

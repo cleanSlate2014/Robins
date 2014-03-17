@@ -382,9 +382,221 @@ namespace CustomControlsLibrary
             checkBox.Background = colorPicker.lighter();
         }
 
-      
+        private void TabRadioButtonLoaded(object sender, RoutedEventArgs e)
+        {
+            Border border = sender as Border;
+            Border ChildBorder = border.FindName("RadioMark") as Border ;
+            Console.WriteLine("TabRadioButton is Loaded..");
+            //Setting border to Width of parent border..
+            ChildBorder.Width = (border.Width * 85)/100;
+            ChildBorder.Height = 4;
+        }
+
+
+        private void TabRadioButtonMouseEnter(object sender, RoutedEventArgs e)
+        {
+            RadioButton button = sender as RadioButton;
+            Console.WriteLine("TabRadioButton Mouse Enter ");
+            BulletDecorator bullet = VisualTreeHelper.GetChild(button, 0) as BulletDecorator;
+            Border border = VisualTreeHelper.GetChild(bullet, 0) as Border;
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.dark(); 
+        }
+
+        private void TabRadioButtonMouseLeave(object sender, RoutedEventArgs e)
+        {
+            RadioButton button = sender as RadioButton;
+            Console.WriteLine("TabRadioButton Mouse Enter ");
+            BulletDecorator bullet = VisualTreeHelper.GetChild(button, 0) as BulletDecorator;
+            Border border = VisualTreeHelper.GetChild(bullet, 0) as Border;
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.light(); 
+        }
+
+        private void TabRadioButtonMouseDown(object sender, RoutedEventArgs e)
+        {
+            //Event for radiobuttonDown
+        }
+
+        private void VerticalTabMouseEnter(object sender, RoutedEventArgs e)
+        {
+            //Event for MouseEnter Radio Button...
+            RadioButton button = sender as RadioButton;
+            Console.WriteLine("TabRadioButton Mouse Enter ");
+            BulletDecorator bullet = VisualTreeHelper.GetChild(button, 0) as BulletDecorator;
+            Border border = VisualTreeHelper.GetChild(bullet, 0) as Border;
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.dark();
+
+        }
+
+        private void VerticalTabMouseLeave(object sender, RoutedEventArgs e)
+        {
+            //Event for MouseEnter Radio Button...
+            RadioButton button = sender as RadioButton;
+            Console.WriteLine("TabRadioButton Mouse Leave");
+            BulletDecorator bullet = VisualTreeHelper.GetChild(button, 0) as BulletDecorator;
+            Border border = VisualTreeHelper.GetChild(bullet, 0) as Border;
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.light();
+
+        }
+
+
+        private void ButtonGroupLoaded(object sender, RoutedEventArgs e)
+        {
+            //Creating the borderbrush..
+            Border border = sender as Border;
+            //Getting the darker color of the background..
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            
+            RadioButton button = VisualTreeHelper.GetParent(border) as RadioButton;
+            if (button.IsChecked == true)
+            {
+                
+                border.BorderBrush = colorPicker.light();
+            }
+            else
+            {
+                border.BorderBrush = colorPicker.dark();
+            }
+
+        }
+
+
+        private void ButtonGroupMouseEnter(object sender, RoutedEventArgs e)
+        {
+            //Creating the borderbrush..
+           
+            RadioButton border = sender as RadioButton;
+          
+            //Getting the darker color of the background..
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.dark();
+        }
+
+
+        private void ButtonGroupMouseLeave(object sender, RoutedEventArgs e)
+        {
+           
+            //Creating the borderbrush..
+            RadioButton border = sender as RadioButton;
+          
+            //Getting the darker color of the background..
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.light();
+        }
+
+
+        private void ButtonGroupMouseDown(object sender, RoutedEventArgs e)
+        {
+            //Creating the borderbrush..
+            RadioButton border = sender as RadioButton;
+          
+            //Getting the darker color of the background..
+            Colorpicker colorPicker = new Colorpicker(border.Background);
+            border.Background = colorPicker.darker();
+        
+
+        }
+
+
+        private void ButtonGroupMouseUp(object sender, RoutedEventArgs e)
+        {
+            //Creating the borderbrush..
+            RadioButton border = sender as RadioButton;
+            ButtonGroup buttonGroup =  VisualTreeHelper.GetParent(border) as ButtonGroup;
+            for (int i = 0; i < buttonGroup.Children.Count; i++)
+            {
+                RadioButton child = VisualTreeHelper.GetChild(buttonGroup,i) as RadioButton;
+                if (child.IsChecked == true)
+                {
+                    child.IsChecked = false;
+                    Colorpicker colorPicker = new Colorpicker(child.Background);
+                    child.Background = colorPicker.lighter();
+                }
+            }
+
+            border.IsChecked = true;
+
+        }
+
+        private void DefaultRadioButtonBorderLoaded(object sender, RoutedEventArgs e)
+        {
+            Border border = sender as Border;
+            Border childBorder = border.FindName("RadioMark") as Border;
+            Colorpicker colorPicker = new Colorpicker(border.BorderBrush);
+            //Colorpicker newColorPicker = new Colorpicker(colorPicker.darker());
+            childBorder.Background = colorPicker.dark();
+        }
 
     }//Partial class Dictionary1 Ends here..
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    class ButtonGroup : StackPanel
+    {
+
+    
+        
+        public ButtonGroup()
+            : base()
+        {
+
+            this.Orientation = Orientation.Horizontal;
+            //Calling the constructor and setting the loaded event..
+            this.Loaded += ButtonGroupLoaded;
+            
+        }
+
+
+        private void ButtonGroupLoaded(object sender, RoutedEventArgs e)
+        {
+           
+           
+            int children = this.Children.Count;
+            for (int i = 0; i < this.Children.Count; i++)
+            {
+                RadioButton myRadioButton = this.Children[i] as RadioButton;
+
+                //Removing margin of all radiobutton..
+                myRadioButton.Margin = new Thickness(0);
+
+                //Finding the border of the element..
+                Border border = VisualTreeHelper.GetChild(this.Children[i], 0) as Border;
+
+                //Checking for first radiobutton..
+                if (i == 0)
+                {
+                    border.CornerRadius = new CornerRadius(10, 0, 0, 10);
+                }
+
+                //Now checking for last radiobutton.
+                if (i == children - 1)
+                {
+                  
+                    
+                    border.CornerRadius = new CornerRadius(0, 10, 10, 0);
+                    //Removing the thickness for last radioButton..
+                    border.BorderThickness = new  Thickness(0);
+                }
+                //Checking for IsChecked property..
+                if (myRadioButton.IsChecked == true)
+                {
+                    Colorpicker colorPicker = new Colorpicker(myRadioButton.Background);
+                    myRadioButton.Background = colorPicker.darker();
+                   
+                }
+            
+            }
+
+       
+
+        }
+
+    }
+
+
 
     class SwitchButton : Control
     {
