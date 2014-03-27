@@ -16,3 +16,11 @@ c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\Cust
 c:\users\robins\documents\visual studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary.pdb
 C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\CustomControlsLibrary_MarkupCompile.lref
 C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\telerik.windows.controls.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\telerik.windows.controls.xml
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\de\telerik.windows.controls.resources.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\es\telerik.windows.controls.resources.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\fr\telerik.windows.controls.resources.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\it\telerik.windows.controls.resources.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\nl\telerik.windows.controls.resources.dll
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\CustomControlsLibrary\CustomControlsLibrary\bin\Debug\tr\telerik.windows.controls.resources.dll

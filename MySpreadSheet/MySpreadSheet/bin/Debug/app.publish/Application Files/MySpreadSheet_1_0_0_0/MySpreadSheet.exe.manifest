@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MySpreadSheet.exe" version="1.0.0.0" publicKeyToken="72f2e4aa229997f2" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MySpreadSheet" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MySpreadSheet.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySpreadSheet.exe" size="54784">
+      <assemblyIdentity name="MySpreadSheet" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>KRHe/1WFLgyRyoJcvj/k1hqSiiTgy4pW3onl3mmr6XU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="CustomControlsLibrary.csproj" size="4821">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>05yheWfwYflfWz0Uecb1v4Jeed+VE8Ne6yDc+taALys=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="MySpreadSheet.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Robins-PC\Robins" issuerKeyHash="53b83cb8625c3e0adcccecd5e9e6689a775b9c60" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>k9wZ5QwxyjJA3aEyix/82Ys+JF6KiDA3K3cWbMWMk60=</DigestValue></Reference></SignedInfo><SignatureValue>GCxsIlbxwc6/3TBrqeGgDFoKUs0Xk5Go+e15xvRYS8HItAmG58iHBaev1Vi72jw5mPdBRuPwMz36o2vE69XJvmtTc7yBW+7VdcT6BNhZ/JYeBDEU33g23HJqZGYqj/dYW1zLPI8eUZ7HNG7lTwkVR6ZXNf1M6KLozsHSxVNtq18=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>p+0RmopJbvLrhcAc7Yen86OAP5Fye0jzg3Aqj38GKDBiRcTyAs2oBPvp78XoYFPqI5McLw/S8i0l0I9pJ+C48JtQFZEJVkEL5zx04mP8KYKHjy/jkv50lkVD3mjRY+PJ2OqhWA2nIw/nMGznr6pY/YtTgyOex6i4mBmaOe7UMU0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="ad938cc56c16772b3730888a5e243e8bd9fc1f8b32a1dd4032ca310ce519dc93" Description="" Url=""><as:assemblyIdentity name="MySpreadSheet.exe" version="1.0.0.0" publicKeyToken="72f2e4aa229997f2" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Robins-PC\Robins</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>xTNYUCS68+pvy/ymAoyk0ENkZqW85wvMu5CmGQ/4ASo=</DigestValue></Reference></SignedInfo><SignatureValue>eMH7wrulQ4PEnkZ1uBpkeH9Y/B20uSeLmiVjOxR+pi1xkw8NvWWWbJ8BYkcrQ6pem1fHqj47alHNZ3Jkpip+iLemTFdGN+WnagNkh2fbs6VADxDkCbJjKguoh+5bhEPr31kAXMGqQZxWon4pkDBP4cevvAexRocXuahnouXXliU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>p+0RmopJbvLrhcAc7Yen86OAP5Fye0jzg3Aqj38GKDBiRcTyAs2oBPvp78XoYFPqI5McLw/S8i0l0I9pJ+C48JtQFZEJVkEL5zx04mP8KYKHjy/jkv50lkVD3mjRY+PJ2OqhWA2nIw/nMGznr6pY/YtTgyOex6i4mBmaOe7UMU0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQQEvT/NFOhbRHZ12lXaIl8DANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAAUgBvAGIAaQBuAHMALQBQAEMAXABSAG8AYgBpAG4AczAeFw0xNDAzMjUwNDUxNDhaFw0xNTAzMjUxMDUxNDhaMCsxKTAnBgNVBAMeIABSAG8AYgBpAG4AcwAtAFAAQwBcAFIAbwBiAGkAbgBzMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn7RGaiklu8uuFwBzth6fzo4A/kXJ7SPODcCqPfwYoMGJFxPICzagE++nvxehgU+ojkxwvD9LyLSXQj2kn4Ljwm1AVkQlWQQvnPHTiY/wpgoePL+OS/nSWRUPeaNFj48nY6qFYDacjD+cwbOevqlj9i1ODI57HqLiYGZo57tQxTQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBACCpKtb9GdcTCerTxbG6jaYPY9Gb54LuokBD0c2MjePp2t6uL5Hyt88b6fJ0EqZoveZmOBI2gCgZ7oNLa6F4tVJEEy4QpvyknEjHrx7Qe4ETtheNA4c+QZCbUy6w8yXRM7ep0WvwCpbcKgNtE7f8QAdoSYn2o66rFaaQbkuX/igF</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="WpfApplication5.MainWindow"
+        Title="MainWindow" Height="380" Width="525">
+	<ed:RegularPolygon Fill="#FFDFDFEE" HorizontalAlignment="Left" Height="19.62" InnerRadius="1" Margin="53.559,58.434,0,0" PointCount="3" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="23.428" RenderTransformOrigin="0.5,0.5">
+		<ed:RegularPolygon.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform/>
+				<SkewTransform/>
+				<RotateTransform Angle="-90.655"/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</ed:RegularPolygon.RenderTransform>
+	</ed:RegularPolygon>
+</Window>

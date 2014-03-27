@@ -23,10 +23,7 @@ namespace CustomControlsLibrary
         public MainWindow()
         {
             InitializeComponent();  
-            
-            
-
-            
+              
         }
 
        
@@ -47,7 +44,7 @@ namespace CustomControlsLibrary
             this.Background = new SolidColorBrush(Color.FromRgb(219,219,224));
             this.Opacity = 0.7;
            
-            //dialogPopUp.IsOpen = true;
+            dialogPopUp.IsOpen = true;
             
         }
 
