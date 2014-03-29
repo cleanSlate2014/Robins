@@ -19,6 +19,49 @@ namespace MySpreadSheet
     partial class _Dictionary1
     {
 
+
+        private void ButtonDown(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("ButtonDown");
+            Button myButton = sender as Button;
+            Brush buttonDark = myButton.Background;
+            Colorpicker colorPicker = new Colorpicker(buttonDark);
+            myButton.Background = colorPicker.darker();
+
+        }//Button Down method ends here
+
+
+        private void ButtonUp(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Button Up");
+
+            Button myButton = sender as Button;
+            Brush buttonDark = myButton.Background;
+            Colorpicker colorPicker = new Colorpicker(buttonDark);
+            myButton.Background = colorPicker.lighter();
+
+        }//ButtonUp method ends here
+
+
+        private void ButtonLeave(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("ButtonLeave");
+            Button myButton = sender as Button;
+            Brush buttonDark = myButton.Background;
+            Colorpicker colorPicker = new Colorpicker(buttonDark);
+            myButton.Background = colorPicker.light();
+        }
+
+
+        private void ButtonEnter(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("ButtonEnter");
+            Button myButton = sender as Button;
+            Brush buttonDark = myButton.Background;
+            Colorpicker colorPicker = new Colorpicker(buttonDark);
+            myButton.Background = colorPicker.dark();
+        }
+
     }
 
 
@@ -63,13 +106,7 @@ namespace MySpreadSheet
             border.BorderBrush = Brushes.Black;
             border.BorderThickness = new Thickness(1);
             gridPanel = new Grid();
-            RowDefinition row1 = new RowDefinition();
-            RowDefinition row2 = new RowDefinition();
-            RowDefinition row3 = new RowDefinition();
-         
-            gridPanel.RowDefinitions.Add(row1);
-            gridPanel.RowDefinitions.Add(row2);
-            gridPanel.RowDefinitions.Add(row3);
+           
 
             border.Child = gridPanel;
            
@@ -122,7 +159,7 @@ namespace MySpreadSheet
 
             }
 
-
+            Grid grid = new Grid();
             FlowDocumentScrollViewer flowDocumentScrollViewer = new FlowDocumentScrollViewer();
             flowDocumentScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
             flowDocumentScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
@@ -134,7 +171,13 @@ namespace MySpreadSheet
             paragraph.Style = Parastyle;
             flowDocument.Blocks.Add(paragraph);
             flowDocumentScrollViewer.Document = flowDocument;
-            gridPanel.Children.Add(flowDocumentScrollViewer);
+      
+            grid.Children.Add(flowDocumentScrollViewer);
+            gridPanel.Children.Add(grid);
+
+
+            //declaring a button grid..
+            Grid btnGrid = new Grid();
 
             //Definging three buttons and their event..
             Button btnOk = new Button();
@@ -151,17 +194,22 @@ namespace MySpreadSheet
             btnNo.Click += btnNo_Click;
 
             StackPanel btnPanel = new StackPanel();
-            Grid.SetRow(btnPanel, 2);
+            btnPanel.Height = 40;
+            btnPanel.Margin = new Thickness(0, 0, 0, 20);
+            btnPanel.Background = Brushes.Red;
+            btnPanel.VerticalAlignment = VerticalAlignment.Bottom;
             btnPanel.Orientation = Orientation.Horizontal;
 
             if (Type == OK)
             {
 
                 btnOk.Width = 80;
-                btnOk.Height = 30;
-                btnOk.HorizontalAlignment = HorizontalAlignment.Center;
+                btnOk.Height = 40;
+                btnOk.Content = "OK";
                 btnPanel.Children.Add(btnOk);
+                btnPanel.HorizontalAlignment = HorizontalAlignment.Center;
                 gridPanel.Children.Add(btnPanel);
+                
             }
 
         }
@@ -170,6 +218,8 @@ namespace MySpreadSheet
         {
             //Setting the value..
             Ok = true;
+            //Now closing window..
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

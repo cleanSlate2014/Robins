@@ -1,0 +1,12 @@
+c:\users\robins\documents\visual studio 2012\Projects\WpfApplication7\WpfApplication7\bin\Debug\WpfApplication7.exe.config
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\App.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7_MarkupCompile.cache
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\MainWindow.baml
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\MainWindow.g.cs
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7.g.resources
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7.Properties.Resources.resources
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7.csproj.GenerateResource.Cache
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\bin\Debug\WpfApplication7.exe
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\bin\Debug\WpfApplication7.pdb
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7.exe
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication7\WpfApplication7\obj\Debug\WpfApplication7.pdb
