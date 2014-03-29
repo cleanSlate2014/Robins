@@ -15,3 +15,4 @@ c:\users\robins\documents\visual studio 2012\Projects\WpfApplication6\WpfApplica
 c:\users\robins\documents\visual studio 2012\Projects\WpfApplication6\WpfApplication6\obj\Debug\WpfApplication6.g.resources
 c:\users\robins\documents\visual studio 2012\Projects\WpfApplication6\WpfApplication6\obj\Debug\WpfApplication6.Properties.Resources.resources
 c:\users\robins\documents\visual studio 2012\Projects\WpfApplication6\WpfApplication6\obj\Debug\Message.csproj.GenerateResource.Cache
+C:\Users\Robins\Documents\Visual Studio 2012\Projects\WpfApplication6\WpfApplication6\obj\Debug\GeneratedInternalTypeHelper.g.cs

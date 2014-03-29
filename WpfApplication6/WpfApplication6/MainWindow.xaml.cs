@@ -34,7 +34,7 @@ namespace WpfApplication6
         {
             String body = " Microsoft is conducting an online survey to understand your opinion of the Visual Studio Developer Center. If you choose to participate, the online survey will be presented to you when you leave the Visual Studio Developer Center.Would you like to participate?";
             String title = "Please help us to improve";
-            MessageBox.Show(body + body + body + body + body + body + body + body + body + body + body + body + body + body + body);
+            //MessageBox.Show(body + body + body + body + body + body + body + body + body + body + body + body + body + body + body);
             MessageDialogBox mdb = new MessageDialogBox(body  + body + body + body  + body + body + body, MessageDialogBox.NONE);
             mdb.Height = 200;
             mdb.Display();
@@ -42,7 +42,7 @@ namespace WpfApplication6
             //mdb.Height = 200;
             //mdb1.ClickDisable = true;
             mdb1.Display();
-            MessageDialogBox mdb2 = new MessageDialogBox(body+body+body, title, MessageDialogBox.YESNO);
+            MessageDialogBox mdb2 = new MessageDialogBox(body+body+body, title,MessageDialogBox.Error  ,MessageDialogBox.YESNO);
             //mdb2.ClickDisable = true;
             //mdb.Height = 200;
             mdb2.Display();

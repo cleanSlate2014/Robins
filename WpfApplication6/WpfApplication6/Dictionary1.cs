@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomControlsLibrary;
 using System.Globalization;
-//using System.Drawing;
+using System.Drawing.Imaging;
+using drawing = System.Drawing;
 
 namespace WpfApplication6
 {
@@ -65,18 +67,33 @@ namespace WpfApplication6
 
     }
 
+
+
+
     class MessageDialogBox : Window
     {
 
         Grid gridPanel;
         Border border;
+        ImageSource IconSource;
+        Image IconImage;
 
         /*Declaring standard values */
         public static  Int32 OK = 5100, OKCANCEL = 5101, YESNO = 5102, YESNOCANCEL = 5103, NONE = 5104;
         public Boolean Ok = false, Cancel = false, Yes = false, No = false;
         private const Int32 defaultOk = 5100;
 
-        #region  Constructor
+        public static Int32
+            App = 1,
+            Exclamation = 2,
+            Error = 3,
+            Warning = 4,
+            Info = 5,
+            Question = 6,
+            Shield = 7,
+            Search = 8; 
+
+        #region  CONSTRUCTOR
 
             public MessageDialogBox()
             {
@@ -100,13 +117,19 @@ namespace WpfApplication6
             }
 
 
-            public MessageDialogBox(String body, String title, Int32 type = defaultOk)
+            public MessageDialogBox(String body, String title, Int32 iconType, Int32 type = defaultOk)
             {
                 //Adding a leftbutton down event to window..for closing of box on click..
                 this.MouseLeftButtonDown += MessageDialogBox_MouseLeftButtonDown;
                 Body = body;
                 Title = title;
                 Type = type;
+                //Setting the IconSource...
+                SetIcon(iconType);
+                Console.WriteLine(IconSource.GetType().ToString());
+                IconImage = new Image();
+                //Now setting the IconImage
+                IconImage.Source = (ImageSource)IconSource;
 
                 gridPanel = new Grid();
                 //Defigning the grid definition..
@@ -123,6 +146,17 @@ namespace WpfApplication6
                 RowDefinition rowDef3 = new RowDefinition();
                 rowDef3.Height = new GridLength(2, GridUnitType.Auto);
                 gridPanel.RowDefinitions.Add(rowDef3);
+
+                //Defigning columns....
+                ColumnDefinition colDef1 = new ColumnDefinition();
+                colDef1.Width = GridLength.Auto;
+                gridPanel.ColumnDefinitions.Add(colDef1);
+
+                ColumnDefinition colDef2 = new ColumnDefinition();
+                colDef2.Width = new GridLength(1, GridUnitType.Star);
+                gridPanel.ColumnDefinitions.Add(colDef2);
+
+
              
             }
 
@@ -153,10 +187,37 @@ namespace WpfApplication6
             }
 
 
+            public MessageDialogBox(String body, String title,  Int32 type = defaultOk)
+            {
+                //Adding a leftbutton down event to window..for closing of box on click..
+                this.MouseLeftButtonDown += MessageDialogBox_MouseLeftButtonDown;
+                Body = body;
+                Title = title;
+                Type = type;
+               
+
+                gridPanel = new Grid();
+                //Defigning the grid definition..
+
+                RowDefinition rowDef1 = new RowDefinition();
+                rowDef1.Height = GridLength.Auto;
+                gridPanel.RowDefinitions.Add(rowDef1);
+
+
+                RowDefinition rowDef2 = new RowDefinition();
+                rowDef2.Height = new GridLength(1, GridUnitType.Star);
+                gridPanel.RowDefinitions.Add(rowDef2);
+
+                RowDefinition rowDef3 = new RowDefinition();
+                rowDef3.Height = new GridLength(2, GridUnitType.Auto);
+                gridPanel.RowDefinitions.Add(rowDef3);
+
+            }
+
         #endregion
 
 
-            public void Display()
+        public void Display()
             {
 
                 this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -172,6 +233,7 @@ namespace WpfApplication6
                 this.MouseLeftButtonDown += DragDropSupport;
                 border = new Border();
                 border.BorderBrush = Brushes.Black;
+                
                 border.HorizontalAlignment = HorizontalAlignment.Center;
                 border.BorderThickness = new Thickness(1);
                 border.Child = gridPanel;
@@ -179,6 +241,7 @@ namespace WpfApplication6
                 border.Width = MessageBoxSize.Width;
                 border.Height = MessageBoxSize.Height;
                 gridPanel.Background = Brushes.White;
+                
                 MessageBoxFactory();
                 this.AddChild(border);
                 this.ShowDialog();
@@ -215,6 +278,7 @@ namespace WpfApplication6
         }
 
 
+
         private Double _height = 250;
         public Double Height
         {
@@ -222,12 +286,24 @@ namespace WpfApplication6
             set { _height = value; }
         }
 
+
         private Boolean _clickDisable = false;
         public Boolean ClickDisable
         {
             get { return _clickDisable; }
             set { _clickDisable = value; }
         }
+
+
+        private Int32 _iconType;
+        public Int32 IconType
+        {
+            get { return _iconType; }
+            set { _iconType = value; }
+
+        }
+
+     
 
         private void MessageBoxFactory()
         {
@@ -246,6 +322,8 @@ namespace WpfApplication6
 
             }
 
+
+
             Grid grid = new Grid();
             FlowDocumentScrollViewer flowDocumentScrollViewer = new FlowDocumentScrollViewer();
             flowDocumentScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
@@ -262,12 +340,51 @@ namespace WpfApplication6
             FlowDocument flowDocument = new FlowDocument();
             flowDocument.FontFamily = new FontFamily("Segoe UI");
             flowDocument.FontSize = 10;
-            Paragraph paragraph = new Paragraph(new Run(Body));
+
+            Paragraph paragraph;
+            try
+            {
+               
+                IconImage.Height = 26;
+                IconImage.Width = 26;
+                Grid ImageGrid = new Grid();
+                //ImageGrid.Background = Brushes.Red;
+                ImageGrid.Width = 50;
+                //ImageGrid.Margin = new Thickness(40);
+                ImageGrid.Children.Add(IconImage);
+                //ImageGrid.SetValue(Grid.ColumnProperty, 0);
+                ImageGrid.HorizontalAlignment = HorizontalAlignment.Left;
+                //ImageGrid.VerticalAlignment = VerticalAlignment.Top;
+                grid.Children.Add(ImageGrid);
+
+                //InlineUIContainer inlineUiContainer = new InlineUIContainer(IconImage);
+                //Span span = new Span(inlineUiContainer);
+                //span.Inlines.Add(new Run(Body));
+                
+                paragraph = new Paragraph(new Run(Body));
+                paragraph.Margin = new Thickness(70);
+            }
+            catch (Exception)
+            {
+                 Console.WriteLine("I am getting exceptions in image");
+                 paragraph = new Paragraph(new Run( Body ));
+
+            }
+            
+            
+            
             Style Parastyle = Application.Current.FindResource("parah4") as Style;
             paragraph.Style = Parastyle;
+            
+
+            
+
             flowDocument.Blocks.Add(paragraph);
+           
+
             flowDocumentScrollViewer.Document = flowDocument;
             grid.Children.Add(flowDocumentScrollViewer);
+            //grid.SetValue(Grid.ColumnProperty, 1);
             gridPanel.Children.Add(grid);
 
 
@@ -381,80 +498,229 @@ namespace WpfApplication6
             }
 
         }
+
+
         
-        //Method for calculating the Width and Height of String
-        private  Size MeasureString(string Data)
+
+        #region FOR GETTING  WINDOWS ICONS
+
+        private  void SetIcon(Int32 icon)
         {
-            var formattedText = new FormattedText(
-                Data,
-                CultureInfo.CurrentUICulture,
-                FlowDirection.LeftToRight,
-                new Typeface(new FontFamily("Segoe UI"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal),
-                10,
-                Brushes.Black);
-
-            return new Size(formattedText.Width, formattedText.Height);
-        }
-
-        private  Size MessageSize(string message)
-        {
-           
-
-            Size PreferredSize = MeasureString(message);
-            Console.WriteLine("Preffered Size is " +PreferredSize.Width + " * " + PreferredSize.Height);
 
 
-            Console.WriteLine(message.Length);
-            if (message.Length < 150)
+            drawing.Bitmap bitmap;
+            if (icon == App)
             {
-
-
-                Width = 320;
-                Height = 180;
+                bitmap = System.Drawing.SystemIcons.Application.ToBitmap();
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    
+                    bitmap.Save(memory, ImageFormat.Png);
+                    memory.Position = 0;
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memory;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                    IconSource = bitmapImage;
+                }
 
                 
+              
             }
-            else if (message.Length < 270)
+            else if(icon == Exclamation)
             {
-                Width = 390;
-                Height = 250;
+                   
+                    bitmap =  System.Drawing.SystemIcons.Exclamation.ToBitmap();
+                    using (MemoryStream memory = new MemoryStream())
+                    {
+
+                        bitmap.Save(memory, ImageFormat.Png);
+                        memory.Position = 0;
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memory;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        IconSource = bitmapImage;
+                    }
+
+                    
             }
-            else if (message.Length > 270 && message.Length < 400)
+            else if(icon == Error)
             {
-                Console.WriteLine("I am inside width >270");
-                Width = 420;
-                Height = 280;
+               
+                     bitmap =  System.Drawing.SystemIcons.Error.ToBitmap();
+                     using (MemoryStream memory = new MemoryStream())
+                     {
+
+                         bitmap.Save(memory, ImageFormat.Png);
+                         memory.Position = 0;
+                         BitmapImage bitmapImage = new BitmapImage();
+                         bitmapImage.BeginInit();
+                         bitmapImage.StreamSource = memory;
+                         bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                         bitmapImage.EndInit();
+                         IconSource = bitmapImage;
+                     }
+
+                   
             }
-            else if (message.Length > 400 && message.Length < 560)
+            else if(icon == Info)
             {
-                Console.WriteLine("I am inside width >400");
-                Width = 470;
-                string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
-                int lines = groups.Length + 1;
-                Height += (int)(PreferredSize.Height + 10) * lines;
+             
+                    bitmap = System.Drawing.SystemIcons.Information.ToBitmap();
+                    using (MemoryStream memory = new MemoryStream())
+                    {
+
+                        bitmap.Save(memory, ImageFormat.Png);
+                        memory.Position = 0;
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memory;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        IconSource = bitmapImage;
+                    }
+
+             
             }
-            else if (message.Length > 560  && message.Length < 810)
+            else if(icon == Question)
             {
-                Console.WriteLine("I am inside width >560");
-                Width = 520;
-                string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
-                int lines = groups.Length+1;
-                Height += (int)(PreferredSize.Height +10) * lines;
+                
+                     bitmap =  System.Drawing.SystemIcons.Question.ToBitmap();
+                     using (MemoryStream memory = new MemoryStream())
+                     {
+
+                         bitmap.Save(memory, ImageFormat.Png);
+                         memory.Position = 0;
+                         BitmapImage bitmapImage = new BitmapImage();
+                         bitmapImage.BeginInit();
+                         bitmapImage.StreamSource = memory;
+                         bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                         bitmapImage.EndInit();
+                         IconSource = bitmapImage;
+                     }
+
             }
-            else
+            else if(icon == Shield)
             {
-                string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
-                int lines = groups.Length + 1;
-                Width = 700;
-                Height += (int)(PreferredSize.Height + 10) * lines;
+                
+                    bitmap =  System.Drawing.SystemIcons.Shield.ToBitmap();
+                    using (MemoryStream memory = new MemoryStream())
+                    {
+
+                        bitmap.Save(memory, ImageFormat.Png);
+                        memory.Position = 0;
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memory;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        IconSource = bitmapImage;
+                    }
+
+                   
             }
-          
-            return new Size(Width, Height);
+            else if(icon == Warning)
+            {
+                
+                    bitmap =  System.Drawing.SystemIcons.Warning.ToBitmap();
+                    using (MemoryStream memory = new MemoryStream())
+                    {
+
+                        bitmap.Save(memory, ImageFormat.Png);
+                        memory.Position = 0;
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memory;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        IconSource = bitmapImage;
+                    }
+
+                   
+            }
         }
 
+       
+      
+
+        
+       
+
+        #endregion
+
+        #region CALCULATING MESSAGE-BOX AUTO SIZE
+
+        //Method for calculating the Width and Height of String
+            private  Size MeasureString(string Data)
+            {
+                var formattedText = new FormattedText(
+                    Data,
+                    CultureInfo.CurrentUICulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(new FontFamily("Segoe UI"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal),
+                    10,
+                    Brushes.Black);
+
+                return new Size(formattedText.Width, formattedText.Height);
+             }
+
+            //For getting the actual size of the Box
+            private  Size MessageSize(string message)
+            {
+           
+
+                Size PreferredSize = MeasureString(message);
+                if (message.Length < 150)
+                {
+                    Width = 320;
+                    Height = 180;
+                }
+                else if (message.Length < 270)
+                {
+                    Width = 390;
+                    Height = 250;
+                }
+                else if (message.Length > 270 && message.Length < 400)
+                {
+                    Console.WriteLine("I am inside width >270");
+                    Width = 420;
+                    Height = 280;
+                }
+                else if (message.Length > 400 && message.Length < 560)
+                {
+                
+                    Width = 470;
+                    string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
+                    int lines = groups.Length + 1;
+                    Height += (int)(PreferredSize.Height + 10) * lines;
+                }
+                else if (message.Length > 560  && message.Length < 810)
+                {
+                
+                    Width = 520;
+                    string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
+                    int lines = groups.Length+1;
+                    Height += (int)(PreferredSize.Height +10) * lines;
+                }
+                else
+                {
+                    string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
+                    int lines = groups.Length + 1;
+                    Width = 700;
+                    Height += (int)(PreferredSize.Height + 10) * lines;
+                }
+          
+                return new Size(Width, Height);
+            }
+
+        #endregion
 
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        #region EVENTS
+            private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             //Setting the value..
             Ok = true;
@@ -462,31 +728,28 @@ namespace WpfApplication6
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+            private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Cancel = true;
             //Now closing window..
             this.Close();
         }
 
-        private void btnYes_Click(object sender, RoutedEventArgs e)
+            private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             Yes = true;
             //Now closing window..
             this.Close();
         }
 
-        private void btnNo_Click(object sender, RoutedEventArgs e)
+            private void btnNo_Click(object sender, RoutedEventArgs e)
         {
             No = true;
             //Now closing window..
             this.Close();
         }
 
-
-
-
-        private void MessageDialogBox_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+            private void MessageDialogBox_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (this.border.IsMouseOver == false && (ClickDisable == false || Type == NONE) )
             {
@@ -496,79 +759,94 @@ namespace WpfApplication6
 
         }
 
-        private void DragDropSupport(object sender, RoutedEventArgs e)
+            private void DragDropSupport(object sender, RoutedEventArgs e)
         {
             DragMove();
         }
 
+        #endregion
+
     }
 
 
-    class CustomPanel : Grid
-    {
-        public CustomPanel()
-            : base()
-        {
-            Style style = Application.Current.FindResource("panel") as Style;
-            this.Style = style;
+    #region CUSTOM PANEL CLASS
+ class CustomPanel : Grid
+   {
+       public CustomPanel() : base()
+       {
+           Style style = Application.Current.FindResource("panel") as Style;
+           this.Style = style;
 
-        }
-    }
-
-
-
-    class Title : Label
-    {
-        public Title()
-        {
-            Type = "headingPanelInfo";
-            this.Loaded += Title_Loaded;
-        }
-
-        String _Type;
-        public String Type
-        {
-            get { return _Type; }
-            set { _Type = value; }
-        }
-
-        private void Title_Loaded(object sender, RoutedEventArgs e)
-        {
-            Style headingPanel = Application.Current.FindResource(Type) as Style;
-            this.Style = headingPanel;
-            this.VerticalAlignment = VerticalAlignment.Top;
-        }
-    }
+       }
+   }
 
 
 
-    class Body : Grid
-    {
-        public Body()
-        {
-            this.Loaded += Body_Loaded;
-            this.Margin = new Thickness(0, 8, 0, 0);
-        }
+   class Title:Label
+   {
+       public Title()
+       {
+
+           Type = "headingPanelInfo";
+          
+          
+
+          this.Loaded +=Title_Loaded;
+       }
+
+       String _Type;
+       public String Type
+       {
+           get { return _Type; }
+           set { _Type = value; }
+       }
+
+       private void Title_Loaded(object sender, RoutedEventArgs e)
+       {
+          
+           Style headingPanel = Application.Current.FindResource(Type) as Style;
+           this.Style = headingPanel;
+           this.VerticalAlignment = VerticalAlignment.Top;
+           
+       }
+   }
 
 
-        private void Body_Loaded(object sender, RoutedEventArgs e)
-        {
 
-            Border border = new Border();
-            border.Padding = new Thickness(8);
-            Style borderStyle = Application.Current.FindResource("textPanelBorder") as Style;
-            border.Style = borderStyle;
-            CustomPanel panel = this.Parent as CustomPanel;
-            try
-            {
-                panel.Children.Remove(this);
-                border.Child = this;
-                panel.Children.Add(border);
-            }
-            catch (Exception)
-            {
-                /*Do nothing */
-            }
-        }
-    }
+   class Body : Grid
+   {
+       public Body()
+       {
+           this.Loaded+=Body_Loaded;
+           this.Margin = new Thickness(0, 8, 0, 0);
+           
+           
+       }
+       private void Body_Loaded(object sender, RoutedEventArgs e)
+       {
+            
+           Border border = new Border();
+           //border.VerticalAlignment = VerticalAlignment.Bottom;
+             
+           border.Padding = new Thickness(8);
+           Style borderStyle = Application.Current.FindResource("textPanelBorder") as Style;
+           border.Style = borderStyle;
+           CustomPanel panel = this.Parent as CustomPanel;
+
+           try
+           {
+               panel.Children.Remove(this);
+               border.Child = this;
+               panel.Children.Add(border);
+           }
+           catch (Exception)
+           {
+               /*Do nothing */
+
+           }
+       }
+   }
+
+
+    #endregion
 }
