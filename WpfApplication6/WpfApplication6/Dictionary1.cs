@@ -75,8 +75,8 @@ namespace WpfApplication6
 
         Grid gridPanel;
         Border border;
-        ImageSource IconSource;
-        Image IconImage;
+        // ImageSource IconSource;
+        //Image IconImage;
 
         /*Declaring standard values */
         public static  Int32 OK = 5100, OKCANCEL = 5101, YESNO = 5102, YESNOCANCEL = 5103, NONE = 5104;
@@ -117,7 +117,7 @@ namespace WpfApplication6
             }
 
 
-            public MessageDialogBox(String body, String title, Int32 iconType, Int32 type = defaultOk)
+         /*   public MessageDialogBox(String body, String title, Int32 iconType, Int32 type = defaultOk)
             {
                 //Adding a leftbutton down event to window..for closing of box on click..
                 this.MouseLeftButtonDown += MessageDialogBox_MouseLeftButtonDown;
@@ -125,11 +125,11 @@ namespace WpfApplication6
                 Title = title;
                 Type = type;
                 //Setting the IconSource...
-                SetIcon(iconType);
-                Console.WriteLine(IconSource.GetType().ToString());
-                IconImage = new Image();
+                //SetIcon(iconType);
+                //Console.WriteLine(IconSource.GetType().ToString());
+                //IconImage = new Image();
                 //Now setting the IconImage
-                IconImage.Source = (ImageSource)IconSource;
+                //IconImage.Source = (ImageSource)IconSource;
 
                 gridPanel = new Grid();
                 //Defigning the grid definition..
@@ -158,7 +158,7 @@ namespace WpfApplication6
 
 
              
-            }
+            }*/
 
 
             public MessageDialogBox(String body, Int32 type = defaultOk)
@@ -294,14 +294,14 @@ namespace WpfApplication6
             set { _clickDisable = value; }
         }
 
-
+        /*
         private Int32 _iconType;
         public Int32 IconType
         {
             get { return _iconType; }
             set { _iconType = value; }
 
-        }
+        }*/
 
      
 
@@ -342,6 +342,10 @@ namespace WpfApplication6
             flowDocument.FontSize = 10;
 
             Paragraph paragraph;
+
+            
+            #region Image
+            /*
             try
             {
                
@@ -367,12 +371,14 @@ namespace WpfApplication6
             catch (Exception)
             {
                  Console.WriteLine("I am getting exceptions in image");
-                 paragraph = new Paragraph(new Run( Body ));
+                
 
             }
+             */
+            #endregion
             
-            
-            
+
+            paragraph = new Paragraph(new Run(Body));
             Style Parastyle = Application.Current.FindResource("parah4") as Style;
             paragraph.Style = Parastyle;
             
@@ -384,7 +390,7 @@ namespace WpfApplication6
 
             flowDocumentScrollViewer.Document = flowDocument;
             grid.Children.Add(flowDocumentScrollViewer);
-            //grid.SetValue(Grid.ColumnProperty, 1);
+           
             gridPanel.Children.Add(grid);
 
 
@@ -415,6 +421,7 @@ namespace WpfApplication6
                 //btnOk.Height = 30;
                 btnOk.Content = "OK";
                 btnOk.Margin = new Thickness(10,0,10,0);
+                
                 btnPanel.Children.Add(btnOk);
                 btnPanel.HorizontalAlignment = HorizontalAlignment.Center;
                 
@@ -480,13 +487,13 @@ namespace WpfApplication6
                 btnCancel.Width = 80;
                
                 btnCancel.Content = "Cancel";
-                btnCancel.Margin = new Thickness(56, 0, 0, 0);
+                btnCancel.Margin = new Thickness(10, 0, 0, 0);
                 btnCancel.HorizontalAlignment =  HorizontalAlignment.Right;
 
                 btnPanel.Children.Add(btnYes);
                 btnPanel.Children.Add(btnNo);
                 btnPanel.Children.Add(btnCancel);
-
+                btnPanel.HorizontalAlignment = HorizontalAlignment.Right;
                 gridPanel.Children.Add(btnPanel);
 
             }
@@ -502,7 +509,7 @@ namespace WpfApplication6
 
         
 
-        #region FOR GETTING  WINDOWS ICONS
+     /*   #region FOR GETTING  WINDOWS ICONS
 
         private  void SetIcon(Int32 icon)
         {
@@ -650,6 +657,11 @@ namespace WpfApplication6
        
 
         #endregion
+
+      * 
+      * 
+      */
+
 
         #region CALCULATING MESSAGE-BOX AUTO SIZE
 

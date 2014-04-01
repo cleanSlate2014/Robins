@@ -42,7 +42,7 @@ namespace WpfApplication6
             //mdb.Height = 200;
             //mdb1.ClickDisable = true;
             mdb1.Display();
-            MessageDialogBox mdb2 = new MessageDialogBox(body+body+body, title,MessageDialogBox.Error  ,MessageDialogBox.YESNO);
+            MessageDialogBox mdb2 = new MessageDialogBox(body+body+body, title,MessageDialogBox.OKCANCEL);
             //mdb2.ClickDisable = true;
             //mdb.Height = 200;
             mdb2.Display();
